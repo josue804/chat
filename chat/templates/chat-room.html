@@ -1,12 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- Main component for a primary marketing message or call to action -->
-<div class="chatbox">
-  <h1>Navbar example</h1>
-  <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-  <p>
-    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-  </p>
+<div class="chatbox-header">
+  <h1>Title of Chat and Other Info</h1>
 </div>
+<div class="chatbox-text">
+  <div class="chatbox-text--chat">
+    <div class="scrollbar" id="style-2">
+      {% for i in '012' %}
+      <div class="chatbox-text--line-{% if i|divisibleby:2%}sent{%else%}received{%endif%}">
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type specimen book..
+        </p>
+      </div>
+      <p class="chatbox-text--author-{% if i|divisibleby:2%}sent{%else%}received{%endif%}"><strong>Josue at 2:30PM</strong></p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<form class="chatbox-form">
+  <div class="input-group chatbox-form--form">
+    {# <input type="text" class="form-control chatbox-form--input"> #}
+    <textarea class="form-control chatbox-form--input" rows="1" cols="40"></textarea>
+    <span class="input-group-btn chatbox-form--send">
+      <button class="btn btn-md btn-success" type="submit">Send</button>
+    </span>
+  </div>
+</form>
 {% endblock content %}

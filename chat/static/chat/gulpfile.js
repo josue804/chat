@@ -6,11 +6,12 @@ var livereload = require('gulp-livereload');
 
 var bootstrapDir = './node_modules/bootstrap-sass/assets';
 
+var bootstrapSassDir = bootstrapDir + '/stylesheets/bootstrap';
 gulp.task('sass', function() {
   return gulp.src('css/style.scss')
             .pipe(sass({
               includePaths: [
-                bootstrapDir + '/stylesheets'
+                bootstrapDir + '/stylesheets',
               ]
             }).on('error', sass.logError))
             .pipe(gulp.dest('./css/'))

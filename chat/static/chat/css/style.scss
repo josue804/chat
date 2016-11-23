@@ -1,9 +1,13 @@
 //
 // The primary stylesheet
 //
-
+$input-border-focus: #ccc;
+$chat-text-padding: 7%;
+$chatbox-width: 70%;
+$chatbox-color: #e2e2e2;
 // Init
 @import 'init';
 
 // Base
 @import 'base/base';
+@import 'chat/chat';

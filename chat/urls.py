@@ -1,7 +1,8 @@
 from django.conf.urls import url
-from .views import ChatRoomView
+from .views import ChatRoomView, ChatDashboardView
 
 app_name = 'chat'
 urlpatterns = [
-    url(r'^$', ChatRoomView.as_view(), name='chat-room'),
+url(r'^$', ChatDashboardView.as_view(), name='chat-dashboard'),
+    url(r'^(?P<slug>[\w-]+)/$', ChatRoomView.as_view(), name='chat-room'),
 ]

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="chatbox-header">
-  <h1>Title of Chat and Other Info</h1>
+  <h1>{{slug|title}}</h1>
 </div>
 <div class="chatbox-text">
   <div class="chatbox-text--chat">
@@ -22,11 +22,11 @@
 </div>
 <form class="chatbox-form">
   <div class="input-group chatbox-form--form">
-    {# <input type="text" class="form-control chatbox-form--input"> #}
     <textarea class="form-control chatbox-form--input" rows="1" cols="40"></textarea>
     <span class="input-group-btn chatbox-form--send">
       <button class="btn btn-md btn-success" type="submit">Send</button>
     </span>
   </div>
 </form>
+
 {% endblock content %}

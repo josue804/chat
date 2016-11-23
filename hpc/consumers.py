@@ -5,19 +5,21 @@ from channels.sessions import channel_session
 @channel_session
 def ws_connect(message):
     # Work out room name from path (ignore slashes)
-    room = message.content['path'].strip("/")
+    split_path = message.content['path'].split("/")
+    prefix = split_path[2]
+    room = split_path[3]
     # Save room in session and add us to the group
     message.channel_session['room'] = room
-    Group("chat-%s" % room).add(message.reply_channel)
+    Group("%s" % room).add(message.reply_channel)
 
 # Connected to websocket.receive
 @channel_session
 def ws_message(message):
-    Group("chat-%s" % message.channel_session['room']).send({
+    Group("%s" % message.channel_session['room']).send({
         "text": message['text'],
     })
 
 # Connected to websocket.disconnect
 @channel_session
 def ws_disconnect(message):
-    Group("chat-%s" % message.channel_session['room']).discard(message.reply_channel)
+    Group("%s" % message.channel_session['room']).discard(message.reply_channel)

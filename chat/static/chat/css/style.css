@@ -3899,6 +3899,33 @@ input[type="button"].btn-block {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #D62929; }
 
+#condition {
+  background-image: none; }
+
+.base-input-form {
+  width: 100%; }
+  .base-input-form .base-input-form--form {
+    display: flex;
+    border: 15px solid #114d7e; }
+  .base-input-form .base-input-form--input {
+    flex: 10;
+    border-radius: 0;
+    overflow: hidden;
+    padding: 25px; }
+  .base-input-form .base-input-form--send .btn {
+    border-radius: 0;
+    padding-right: 25px;
+    padding-left: 25px;
+    height: 100%; }
+  .base-input-form .base-input-form--send .glyphicon, .base-input-form .base-input-form--send .glyphicon-search {
+    top: 0; }
+
+li.suggestion {
+  color: #114d7e; }
+
+#searchCount {
+  visibility: hidden; }
+
 .chatbox-header {
   width: 70%;
   border-top: 10px solid #114d7e;

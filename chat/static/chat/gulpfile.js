@@ -24,7 +24,8 @@ gulp.task('templates', function() {
 
 var bootstrapJsDir = bootstrapDir + '/javascripts/bootstrap';
 var jsFiles = [
-  './js/chat-box.js',
+  './js/chat-room.js',
+  './js/chat-dashboard.js',
   bootstrapJsDir + '/dropdown.js',
 ];
 gulp.task('js', function() {

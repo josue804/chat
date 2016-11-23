@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Search for a chat room based on a condition</p>
+      <form class="base-input-form" method="post">
+        {% csrf_token %}
+        <div class="input-group base-input-form--form">
+          <input type="text" id="condition" class="form-control base-input-form--input" placeholder="Begin typing..." name="room" required="True">
+          <span class="input-group-btn base-input-form--send">
+            <button class="btn btn-md btn-success glyphicon glyphicon-search" type="submit"></button>
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <p>Join or Create a General Channel</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

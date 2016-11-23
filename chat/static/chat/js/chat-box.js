@@ -15,11 +15,28 @@ socket.onopen = function() {
     $(document).ready(function() {
       $(".chatbox-form").submit(function(e){
         e.preventDefault();
-        message = $(".chatbox-form--input").val().replace(/\n/g,"<br>");
-        $(".chatbox-form--input").val("");
+        var $input = $(".chatbox-form--input")
+        var message = $input.val().replace(/\n/g,"<br>");
+        $input.val("");
+        $input.height("18px");
+        $input.focus()
         socket.send(message)
       });
     });
 }
 // Call onopen directly if socket is already open
 if (socket.readyState == WebSocket.OPEN) socket.onopen();
+
+var textarea = document.querySelector('textarea');
+
+textarea.addEventListener('keydown', autosize);
+
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding:20px';
+    // for box-sizing other than "content-box" use:
+    // el.style.cssText = '-moz-box-sizing:content-box';
+    el.style.cssText = 'height:' + el.scrollHeight  + 'px';
+  },0);
+}

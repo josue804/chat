@@ -3958,9 +3958,12 @@ input[type="button"].btn-block {
   .chatbox-form .chatbox-form--input {
     flex: 10;
     border-radius: 0;
-    border: 2px solid transparent; }
+    border: 2px solid transparent;
+    overflow: hidden;
+    padding: 18px; }
   .chatbox-form .chatbox-form--send .btn {
     border-radius: 0;
     padding-right: 25px;
     padding-left: 25px;
-    border: 2px solid transparent; }
+    border: 2px solid transparent;
+    height: 100%; }

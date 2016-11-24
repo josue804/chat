@@ -25,7 +25,7 @@ SECRET_KEY = '^)@95pniyq7%zv9!bux5h9h7lk!5u#@-&g%4!bbf5+d!mrvpjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com']
 
 
 # Application definition

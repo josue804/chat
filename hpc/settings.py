@@ -138,5 +138,5 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(PROJECT_DIR, '/static/')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'chat/static/chat/'),
+    os.path.join(PROJECT_DIR, 'chat/static/chat/'),
 ]

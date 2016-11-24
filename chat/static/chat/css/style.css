@@ -3877,13 +3877,65 @@ input[type="button"].btn-block {
   .hidden-print {
     display: none !important; } }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #74303C;
+  background: -webkit-linear-gradient(to left, #8B2323, #74303C);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #8B2323, #74303C);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+
+.navbar {
+  background-color: #013020;
+  border: 0;
+  height: 75px; }
+
+.navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
+  color: #fff;
+  font-weight: 700;
+  line-height: 50px; }
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+  line-height: 45px; }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c; }
+
+.dropdown-menu {
+  background-color: #669933; }
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #612933; }
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a {
+  color: #fff; }
+
+.jumbotron {
+  background-color: #FCBD2B; }
+
+h1, h2, h3, h4, h5, h6,
+a, p {
+  color: #27315A; }
+
 .scrollbar {
   float: left;
   height: 450px;
   width: 100%;
   background: #F5F5F5;
   overflow-y: scroll;
-  background-color: #e2e2e2;
+  background-color: #E2E2D3;
   color: black;
   padding-bottom: 7%; }
 
@@ -3906,7 +3958,7 @@ input[type="button"].btn-block {
   width: 100%; }
   .base-input-form .base-input-form--form {
     display: flex;
-    border: 15px solid #114d7e; }
+    border: 15px solid #27315A; }
   .base-input-form .base-input-form--input {
     flex: 10;
     border-radius: 0;
@@ -3928,20 +3980,21 @@ li.suggestion {
 
 .chatbox-header {
   width: 70%;
-  border-top: 10px solid #114d7e;
+  border-top: 10px solid #27315A;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   color: white;
-  background-color: #114d7e;
+  background-color: #27315A;
   margin: 0;
   padding-left: 20px; }
   .chatbox-header h1 {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    color: #fff; }
 
 .chatbox-text {
   width: 70%;
   overflow: auto;
-  border: 15px solid #114d7e;
+  border: 15px solid #27315A;
   border-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -3977,11 +4030,11 @@ li.suggestion {
 
 .chatbox-form {
   width: 70%;
-  border-bottom: 15px solid #114d7e; }
+  border-bottom: 15px solid #27315A; }
   .chatbox-form .chatbox-form--form {
     display: flex;
-    border-left: 15px solid #114d7e;
-    border-right: 15px solid #114d7e; }
+    border-left: 15px solid #27315A;
+    border-right: 15px solid #27315A; }
   .chatbox-form .chatbox-form--input {
     flex: 10;
     border-radius: 0;

@@ -7,15 +7,11 @@
 <div class="chatbox-text">
   <div class="chatbox-text--chat">
     <div class="scrollbar" id="style-2">
-      {% for i in '012' %}
-      <div class="chatbox-text--line-{% if i|divisibleby:2%}sent{%else%}received{%endif%}">
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-          when an unknown printer took a galley of type and scrambled it to make a type specimen book..
-        </p>
+      {% for message in messages %}
+      <div class="chatbox-text--line-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">
+        <p>{{message|safe}}</p>
       </div>
-      <p class="chatbox-text--author-{% if i|divisibleby:2%}sent{%else%}received{%endif%}"><strong>Josue at 2:30PM</strong></p>
+      <p class="chatbox-text--author-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}"><strong>{{message.formatted_handle}}</strong></p>
       {% endfor %}
     </div>
   </div>

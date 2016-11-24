@@ -4,21 +4,26 @@
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatsocket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat" + window.location.pathname);
 chatsocket.onmessage = function(e) {
-    $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
-                              "<p>" +
-                                e.data +
-                              "</p>" +
-                            "</div>" +
-                            "<p class='chatbox-text--author-sent'><strong>Josue at 2:30PM</strong></p>")
-    $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
+  data_array = e.data.split('/')
+  text = data_array[0]
+  handle = data_array[1]
+  $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
+                            "<p>" +
+                              text +
+                            "</p>" +
+                          "</div>" +
+                          "<p class='chatbox-text--author-sent'><strong>" +
+                            handle +
+                          "</strong></p>")
+  $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
 }
 
 chatsocket.onopen = function() {
   if ($('.chatbox-text').length < 1) {
     return false;
   }
-  $('.scrollbar')[0].scrollTop = $('.scrollbar')[0].scrollHeight;
     $(document).ready(function() {
+      $('.scrollbar')[0].scrollTop = $('.scrollbar')[0].scrollHeight;
       $(".chatbox-form").submit(function(e){
         e.preventDefault();
         var $input = $(".chatbox-form--input")

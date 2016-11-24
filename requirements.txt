@@ -5,6 +5,7 @@ channels==0.17.3
 constantly==15.1.0
 daphne==0.15.0
 Django==1.10.3
+django-autoslug==1.9.3
 -e git+https://github.com/jrief/django-websocket-redis@31723a7ae2de62a88c2b0d17950611052730f244#egg=django_websocket_redis
 gevent==1.1.2
 greenlet==0.4.10

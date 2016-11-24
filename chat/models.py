@@ -2,6 +2,8 @@ from django.db import models
 from autoslug import AutoSlugField
 from django.utils import timezone
 
+def get_local_time():
+    return timezone.localtime(timezone.now())
 # Create your models here.
 class Room(models.Model):
     name = models.CharField(max_length=255)
@@ -14,7 +16,7 @@ class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     handle = models.TextField()
     message = models.TextField()
-    timestamp = models.DateTimeField(default=timezone.now, db_index=True)
+    timestamp = models.DateTimeField(default=get_local_time, db_index=True)
 
     def __str__(self):
         return self.message

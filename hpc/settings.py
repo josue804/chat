@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'chat',
     'channels',
     'autoslug',
+    'whitenoise',
 ]
 
 CHANNEL_LAYERS = {

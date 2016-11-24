@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hpc',
     'chat',
     'channels',
+    'autoslug',
 ]
 
 CHANNEL_LAYERS = {

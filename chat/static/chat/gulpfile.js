@@ -26,7 +26,7 @@ var bootstrapJsDir = bootstrapDir + '/javascripts/bootstrap';
 var jsFiles = [
   './js/chat-room.js',
   './js/chat-dashboard.js',
-  bootstrapJsDir + '/dropdown.js',
+  bootstrapJsDir + '/alert.js',
 ];
 gulp.task('js', function() {
   return gulp.src(jsFiles)

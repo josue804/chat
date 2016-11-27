@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="jumbotron">
+  <form class="form" method="post">
+    {% csrf_token %}
+    {%bootstrap_form form%}
+    {%bootstrap_button 'Login' 'submit' 'btn btn-md btn-custom'%}
+    <a href="{% url 'chat:chat-dashboard'%}"class="btn btn-custom btn-md">Continue as Guest</a>
+  </form>
+</div>
+{% endblock content %}

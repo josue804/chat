@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'channels',
     'autoslug',
     'whitenoise',
+    'lazysignup',
+    'bootstrap3',
 ]
 
 CHANNEL_LAYERS = {
@@ -64,6 +66,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'lazysignup.backends.LazySignupBackend',
+)
 
 ROOT_URLCONF = 'hpc.urls'
 
@@ -89,17 +96,17 @@ WSGI_APPLICATION = 'hpc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'hpc',
-#         'USER': 'root',
-#         'PASSWORD': 'meh',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
-DATABASES = {'default' : dj_database_url.config() }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hpc',
+        'USER': 'root',
+        'PASSWORD': 'meh',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+# DATABASES = {'default' : dj_database_url.config() }
 
 
 
@@ -144,3 +151,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'chat/static/chat'),
 )
+
+LOGOUT_REDIRECT_URL = 'dashboard'

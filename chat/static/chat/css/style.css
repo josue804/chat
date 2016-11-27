@@ -3538,7 +3538,29 @@ input[type="button"].btn-block {
 /*@import "bootstrap/panels";*/
 /*@import "bootstrap/responsive-embed";*/
 /*@import "bootstrap/wells";*/
-/*@import "bootstrap/close";*/
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.2;
+  filter: alpha(opacity=20); }
+  .close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.5;
+    filter: alpha(opacity=50); }
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none; }
+
 .modal-open {
   overflow: hidden; }
 
@@ -3879,14 +3901,10 @@ input[type="button"].btn-block {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #74303C;
-  background: -webkit-linear-gradient(to left, #8B2323, #74303C);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #8B2323, #74303C);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  background: url("../img/ignasi_pattern_s.png"); }
 
 .navbar {
-  background-color: #013020;
+  background-color: #FF006C;
   border: 0;
   height: 75px; }
 
@@ -3907,8 +3925,7 @@ body {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c; }
+  background-color: #CC0056; }
 
 .dropdown-menu {
   background-color: #669933; }
@@ -3923,7 +3940,7 @@ body {
   color: #fff; }
 
 .jumbotron {
-  background-color: #FCBD2B; }
+  background-color: #8FBE00; }
 
 h1, h2, h3, h4, h5, h6,
 a, p {
@@ -3935,7 +3952,7 @@ a, p {
   width: 100%;
   background: #F5F5F5;
   overflow-y: scroll;
-  background-color: #E2E2D3;
+  background-color: #FFF;
   color: black;
   padding-bottom: 7%; }
 
@@ -3949,7 +3966,7 @@ a, p {
 
 #style-2::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #D62929; }
+  background-color: #444; }
 
 #condition {
   background-image: none; }
@@ -3958,7 +3975,7 @@ a, p {
   width: 100%; }
   .base-input-form .base-input-form--form {
     display: flex;
-    border: 15px solid #27315A; }
+    border: 15px solid #698B00; }
   .base-input-form .base-input-form--input {
     flex: 10;
     border-radius: 0;
@@ -3978,13 +3995,32 @@ li.suggestion {
 #searchCount {
   visibility: hidden; }
 
+label {
+  color: #fff; }
+
+.btn-custom {
+  color: #fff;
+  background-color: #FF006C; }
+
+.btn-custom:hover {
+  color: #fff;
+  background-color: #FF3389; }
+
+.btn-chat {
+  color: #fff;
+  background: #FF006C; }
+
+.btn-chat:hover {
+  color: #fff;
+  background-color: #FF3389; }
+
 .chatbox-header {
   width: 70%;
-  border-top: 10px solid #27315A;
+  border-top: 10px solid #031634;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   color: white;
-  background-color: #27315A;
+  background-color: #031634;
   margin: 0;
   padding-left: 20px; }
   .chatbox-header h1 {
@@ -3994,7 +4030,7 @@ li.suggestion {
 .chatbox-text {
   width: 70%;
   overflow: auto;
-  border: 15px solid #27315A;
+  border: 15px solid #031634;
   border-bottom: 0;
   display: flex;
   flex-direction: column;
@@ -4006,6 +4042,9 @@ li.suggestion {
     margin-top: 7%;
     margin-right: 45%;
     text-align: left;
+    border-radius: 20px; }
+  .chatbox-text .chatbox-text--line-message-sent {
+    text-align: left;
     background: rgba(255, 165, 0, 0.5);
     border-radius: 20px;
     padding: 20px 30px 20px 20px; }
@@ -4014,33 +4053,33 @@ li.suggestion {
     margin-left: 45%;
     margin-top: 7%;
     text-align: right;
+    border-radius: 20px; }
+  .chatbox-text .chatbox-text--line-message-received {
+    text-align: right;
     background: rgba(0, 0, 255, 0.5);
     border-radius: 20px;
     padding: 20px 20px 20px 30px; }
   .chatbox-text .chatbox-text--author-sent {
     margin-left: 5%;
-    margin-right: 45%;
-    text-align: left;
-    padding: 5px 30px 20px 20px; }
+    text-align: left; }
   .chatbox-text .chatbox-text--author-received {
     margin-right: 5%;
-    margin-left: -20%;
-    text-align: right;
-    padding: 5px 20px 20px 30px; }
+    text-align: left; }
 
 .chatbox-form {
   width: 70%;
-  border-bottom: 15px solid #27315A; }
+  border-bottom: 15px solid #031634; }
   .chatbox-form .chatbox-form--form {
     display: flex;
-    border-left: 15px solid #27315A;
-    border-right: 15px solid #27315A; }
+    border-left: 15px solid #031634;
+    border-right: 15px solid #031634; }
   .chatbox-form .chatbox-form--input {
     flex: 10;
     border-radius: 0;
     border: 2px solid transparent;
     overflow: hidden;
-    padding: 18px; }
+    padding: 18px;
+    background: #EEE; }
   .chatbox-form .chatbox-form--send .btn {
     border-radius: 0;
     padding-right: 25px;

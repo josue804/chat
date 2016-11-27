@@ -7,10 +7,13 @@ daphne==0.15.0
 dj-database-url==0.4.1
 Django==1.10.3
 django-autoslug==1.9.3
+django-bootstrap3==7.1.0
+django-lazysignup==1.1.1
 -e git+https://github.com/jrief/django-websocket-redis@31723a7ae2de62a88c2b0d17950611052730f244#egg=django_websocket_redis
 gevent==1.1.2
 greenlet==0.4.10
 gunicorn==19.6.0
+haikunator==2.1.0
 incremental==16.10.1
 msgpack-python==0.4.8
 psycopg2==2.6.2

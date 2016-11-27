@@ -8,15 +8,18 @@ chatsocket.onmessage = function(e) {
   text = data_array[0]
   handle = data_array[1]
   $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
-                            "<p>" +
-                              text +
-                            "</p>" +
+                            "<div class='chatbox-text--line-message-sent'>" +
+                              "<p>" +
+                                text +
+                              "</p>" +
+                            "</div>" +
                           "</div>" +
-                          "<p class='chatbox-text--author-sent'><strong>" +
+                          "<small class='chatbox-text--author-sent'>" +
                             handle +
-                          "</strong></p>")
+                          "</small>")
   $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
 }
+
 
 chatsocket.onopen = function() {
   if ($('.chatbox-text').length < 1) {

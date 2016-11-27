@@ -2,16 +2,18 @@
 
 {% block content %}
 <div class="chatbox-header">
-  <h1>{{slug|title}}</h1>
+  <h1>{{room.name|title}}</h1>
 </div>
 <div class="chatbox-text">
   <div class="chatbox-text--chat">
     <div class="scrollbar" id="style-2">
       {% for message in messages %}
       <div class="chatbox-text--line-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">
-        <p>{{message|safe}}</p>
+        <div class="chatbox-text--line-message-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">
+          <p>{{message|safe}}</p>
+        </div>
+        <small class="chatbox-text--author-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">{{message.formatted_handle}}</small>
       </div>
-      <p class="chatbox-text--author-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}"><strong>{{message.formatted_handle}}</strong></p>
       {% endfor %}
     </div>
   </div>
@@ -20,7 +22,7 @@
   <div class="input-group chatbox-form--form">
     <textarea class="form-control chatbox-form--input" rows="1" cols="40"></textarea>
     <span class="input-group-btn chatbox-form--send">
-      <button class="btn btn-md btn-success" type="submit">Send</button>
+      <button class="btn btn-md btn-chat" type="submit">Send</button>
     </span>
   </div>
 </form>

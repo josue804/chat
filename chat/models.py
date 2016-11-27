@@ -28,3 +28,11 @@ class Message(models.Model):
     @property
     def formatted_handle(self):
         return self.handle + ' on ' + self.timestamp.strftime('%b %-d %-I:%M %p')
+
+class GuestUser(models.Model):
+    name = models.CharField(max_length=30)
+    date_created = models.DateTimeField(auto_now_add=True)
+    temp_token = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name

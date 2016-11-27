@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'whitenoise',
     'lazysignup',
     'bootstrap3',
+    'haikunator',
 ]
 
 CHANNEL_LAYERS = {

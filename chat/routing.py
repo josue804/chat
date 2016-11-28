@@ -1,5 +1,5 @@
 from channels.routing import route
-from hpc.consumers import ws_message, ws_connect, ws_disconnect
+from chat.consumers import ws_message, ws_connect, ws_disconnect
 
 channel_routing = [
     route("websocket.connect", ws_connect),

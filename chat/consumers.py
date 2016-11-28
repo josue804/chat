@@ -1,9 +1,12 @@
 from channels import Group
 from channels.sessions import channel_session
 from chat.models import Room, Message
+from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
+from lazysignup.utils import is_lazy_user
+
 
 # Connected to websocket.connect
-@channel_session
+@channel_session_user_from_http
 def ws_connect(message):
     try:
         # Work out room name from path (ignore slashes)
@@ -19,8 +22,9 @@ def ws_connect(message):
     Group("%s" % room).add(message.reply_channel)
 
 # Connected to websocket.receive
-@channel_session
+@channel_session_user_from_http
 def ws_message(message):
+    # import code;code.interact(local=dict(globals(),**locals()))
     room = Room.objects.get(slug=message.channel_session['room'])
     saved_message = Message.objects.create(room=room, handle='guest', message=message['text'])
     Group("%s" % message.channel_session['room']).send({
@@ -28,6 +32,6 @@ def ws_message(message):
     })
 
 # Connected to websocket.disconnect
-@channel_session
+@channel_session_user_from_http
 def ws_disconnect(message):
     Group("%s" % message.channel_session['room']).discard(message.reply_channel)

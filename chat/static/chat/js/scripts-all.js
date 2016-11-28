@@ -31,6 +31,7 @@ chatsocket.onopen = function() {
         e.preventDefault();
         var $input = $(".chatbox-form--input")
         var message = $input.val().replace(/\n/g,"<br>");
+        var token = $input.attr('token')
         $input.val("");
         $input.height("18px");
         $input.focus();

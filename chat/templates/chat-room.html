@@ -18,13 +18,21 @@
     </div>
   </div>
 </div>
+{% if form %}
 <form class="chatbox-form">
-  <div class="input-group chatbox-form--form">
-    <textarea class="form-control chatbox-form--input" rows="1" cols="40"></textarea>
-    <span class="input-group-btn chatbox-form--send">
-      <button class="btn btn-md btn-chat" type="submit">Send</button>
-    </span>
-  </div>
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="input-group chatbox-form--form">
+      {{field}}
+      <span class="input-group-btn chatbox-form--send">
+        <button class="btn btn-md btn-chat" type="submit">Send</button>
+      </span>
+    </div>
+  {% endfor %}
+
 </form>
+
+{% endif %}
+
 
 {% endblock content %}

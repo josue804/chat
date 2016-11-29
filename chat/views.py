@@ -15,6 +15,7 @@ def get_client_ip(request):
         ip = x_forwarded_for.split(',')[-1]
     else:
         ip = request.META.get('REMOTE_ADDR')
+    request.session['client_ip'] = ip
     return ip
 
 def get_or_create_guest_account(user, request):

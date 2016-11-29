@@ -1,6 +1,7 @@
 from channels import Group
 from channels.sessions import channel_session
-from chat.models import Room, Message
+from chat.models import Room, Message, GuestUser
+from chat.views import get_client_ip
 from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
 from lazysignup.utils import is_lazy_user
 
@@ -8,6 +9,11 @@ from lazysignup.utils import is_lazy_user
 # Connected to websocket.connect
 @channel_session_user_from_http
 def ws_connect(message):
+    if is_lazy_user(message.user):
+        guest = GuestUser.objects.get(ip_address=message.content['client'][0])
+        message.channel_session['handle'] = guest.username
+    else:
+        message.channel_session['handle'] = 'Real User'
     try:
         # Work out room name from path (ignore slashes)
         split_path = message.content['path'].split("/")
@@ -24,9 +30,9 @@ def ws_connect(message):
 # Connected to websocket.receive
 @channel_session_user_from_http
 def ws_message(message):
-    # import code;code.interact(local=dict(globals(),**locals()))
+    handle = message.channel_session.get('handle')
     room = Room.objects.get(slug=message.channel_session['room'])
-    saved_message = Message.objects.create(room=room, handle='guest', message=message['text'])
+    saved_message = Message.objects.create(room=room, handle=handle, message=message['text'])
     Group("%s" % message.channel_session['room']).send({
         "text": saved_message.message+'/'+saved_message.formatted_handle,
     })

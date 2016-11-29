@@ -2,17 +2,17 @@
 
 {% block content %}
 <div class="chatbox-header">
-  <h1>{{room.name|title}}</h1>
+  <h1>{{room.name|title}} | Chat</h1>
 </div>
 <div class="chatbox-text">
   <div class="chatbox-text--chat">
     <div class="scrollbar" id="style-2">
       {% for message in messages %}
-      <div class="chatbox-text--line-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">
-        <div class="chatbox-text--line-message-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">
+      <div class="chatbox-text--line-{% if message.handle == username%}sent{%else%}received{%endif%}">
+        <div class="chatbox-text--line-message-{% if message.handle == username%}sent{%else%}received{%endif%}">
           <p>{{message|safe}}</p>
         </div>
-        <small class="chatbox-text--author-{% if forloop.counter|divisibleby:2%}sent{%else%}received{%endif%}">{{message.formatted_handle}}</small>
+        <small class="chatbox-text--author-{% if message.handle == username%}sent{%else%}received{%endif%}">{{message.formatted_handle}}</small>
       </div>
       {% endfor %}
     </div>

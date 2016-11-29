@@ -13,10 +13,10 @@ chatsocket.onmessage = function(e) {
                                 text +
                               "</p>" +
                             "</div>" +
-                          "</div>" +
-                          "<small class='chatbox-text--author-sent'>" +
+                            "<small class='chatbox-text--author-sent'>" +
                             handle +
-                          "</small>")
+                            "</small>" +
+                          "</div>")
   $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
 }
 

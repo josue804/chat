@@ -23,16 +23,17 @@ class Message(models.Model):
 
     @property
     def formatted_timestamp(self):
-        return self.timestamp.strftime('%b %-d %-I:%M %p')
+        return timezone.localtime(self.timestamp).strftime('%b %-d %-I:%M %p PST')
 
     @property
     def formatted_handle(self):
-        return self.handle + ' on ' + self.timestamp.strftime('%b %-d %-I:%M %p')
+        return self.handle + ' on ' + timezone.localtime(self.timestamp).strftime('%b %-d %-I:%M %p PST')
 
 class GuestUser(models.Model):
-    name = models.CharField(max_length=30)
+    username = models.CharField(max_length=30)
     date_created = models.DateTimeField(auto_now_add=True)
     temp_token = models.CharField(max_length=500)
+    ip_address = models.GenericIPAddressField(null=True)
 
     def __str__(self):
-        return self.name
+        return self.username

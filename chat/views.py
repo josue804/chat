@@ -9,15 +9,24 @@ from django.utils.decorators import method_decorator
 from haikunator import Haikunator
 from .forms import ChatRoomForm
 
-def get_or_create_guest_account(user):
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',').last()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+def get_or_create_guest_account(user, request):
+    client_ip = get_client_ip(request)
     try:
-        guest_user = GuestUser.objects.get(temp_token=user.username)
-        return guest_user.name
+        guest_user = GuestUser.objects.get(ip_address=client_ip)
+        return guest_user.username
     except:
         haikunator = Haikunator()
         guest_name = haikunator.haikunate(token_length=0)
-        GuestUser.objects.create(name=guest_name, temp_token=user.username)
-        return guest_name
+        guest_user = GuestUser.objects.create(username=guest_name, temp_token=user.username, ip_address=client_ip)
+        return guest_user.username
 
 @method_decorator(allow_lazy_user, name='dispatch')
 class ChatRoomView(FormView):
@@ -27,11 +36,10 @@ class ChatRoomView(FormView):
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatRoomView, self).get_context_data(*args, **kwargs)
         room = Room.objects.get(slug=self.kwargs['slug'])
-        kwargs['messages'] = room.messages.all()
+        kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
         if is_lazy_user(self.request.user):
-            kwargs['guest_name'] = get_or_create_guest_account(self.request.user)
-            kwargs['gt'] = self.request.user.username
+            kwargs['username'] = get_or_create_guest_account(self.request.user, self.request)
         return kwargs
 
 
@@ -42,7 +50,7 @@ class ChatDashboardView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatDashboardView, self).get_context_data(*args, **kwargs)
         if is_lazy_user(self.request.user):
-            kwargs['guest_name'] = 'Guest ' + get_or_create_guest_account(self.request.user)
+            kwargs['username'] = get_or_create_guest_account(self.request.user, self.request)
         return kwargs
 
     def post(self, form):

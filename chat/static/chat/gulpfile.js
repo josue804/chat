@@ -27,6 +27,9 @@ var jsFiles = [
   './js/chat-room.js',
   './js/chat-dashboard.js',
   bootstrapJsDir + '/alert.js',
+  bootstrapJsDir + '/transition.js',
+  bootstrapJsDir + '/collapse.js',
+  bootstrapJsDir + '/dropdown.js',
 ];
 gulp.task('js', function() {
   return gulp.src(jsFiles)

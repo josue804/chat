@@ -3,6 +3,7 @@ Hospital Chat
 ==========
 
 Provides condition-based live-chat channels for hospital patients. No login required.
+
 Click here for live demo: https://warm-depths-62159.herokuapp.com/chat
 
 ## Installation

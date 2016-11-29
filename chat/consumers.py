@@ -10,6 +10,7 @@ from lazysignup.utils import is_lazy_user
 @channel_session_user_from_http
 def ws_connect(message):
     if is_lazy_user(message.user):
+        print(message.content['client'])
         guest = GuestUser.objects.get(ip_address=message.content['client'][0])
         message.channel_session['handle'] = guest.username
     else:

@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron">
+  <h1>Search for a Chat Room</h1>
+  <hr>
   <form class="base-input-form" method="post">
     {% csrf_token %}
-    <label>Search for a chat room regarding a condition</label>
+    <label>
+      <strong>Search</strong> for a chat room by typing in a <strong>condition</strong><br>
+      or <br>
+      <strong>Create</strong> a room by typing in its <strong>desired title</strong> and clicking the search button.
+    </label>
     <div class="input-group base-input-form--form">
-      <input type="text" id="condition" class="form-control base-input-form--input" placeholder="Begin typing..." name="room" required="True">
+      <input type="text" id="condition" class="form-control base-input-form--input" placeholder="e.g. Rhabdomyolysis" name="room" required="True">
       <span class="input-group-btn base-input-form--send">
         <button class="btn btn-md btn-custom glyphicon glyphicon-search" type="submit"></button>
       </span>

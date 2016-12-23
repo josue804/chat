@@ -7,6 +7,7 @@ def get_local_time():
 # Create your models here.
 class Room(models.Model):
     name = models.CharField(max_length=255)
+    connections = models.IntegerField(default=0)
     slug = AutoSlugField(populate_from='name')
 
     def __str__(self):

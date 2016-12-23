@@ -1,6 +1,3 @@
-// Note that the path doesn't matter for routing; any WebSocket
-// connection gets bumped over to WebSocket consumers
-
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatsocket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat" + window.location.pathname);
 chatsocket.onmessage = function(e) {
@@ -48,7 +45,9 @@ if (chatsocket.readyState == WebSocket.OPEN) chatsocket.onopen();
 function autosize(){
   var el = this;
   setTimeout(function(){
+    debugger;
     el.style.cssText = 'height:auto; padding:20px';
     el.style.cssText = 'height:' + el.scrollHeight  + 'px';
+    $(document).scrollTop($(document).height());
   },0);
 }

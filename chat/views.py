@@ -8,6 +8,11 @@ from lazysignup.templatetags.lazysignup_tags import is_lazy_user
 from django.utils.decorators import method_decorator
 from haikunator import Haikunator
 from .forms import ChatRoomForm
+from django.http import HttpResponse
+from django.core import serializers
+from django.db.models import Q
+
+from dal import autocomplete
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -55,7 +60,19 @@ class ChatDashboardView(TemplateView):
         return kwargs
 
     def post(self, form):
-        unslugified_room = form.POST.get('room')
+        unslugified_room = form.POST.get('room').title()
         room_slug = slugify(unslugified_room)
         Room.objects.get_or_create(name=unslugified_room, slug=room_slug)
         return redirect('chat:chat-room', slug=room_slug)
+
+def room_autocomplete(request, name):
+    filtered_rooms_starts = list(Room.objects.filter(name__istartswith=name).order_by('-connections'))
+    filtered_rooms_contains = list(Room.objects.filter(name__icontains=name).order_by('-connections'))
+
+    in_starts = set(filtered_rooms_starts)
+    in_contains = set(filtered_rooms_contains)
+
+    in_contains_but_not_in_starts = in_contains - in_starts
+
+    filtered_rooms = filtered_rooms_starts + list(in_contains_but_not_in_starts)
+    return HttpResponse(serializers.serialize("json", filtered_rooms, fields=('name', 'connections')))

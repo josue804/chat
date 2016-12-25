@@ -13,6 +13,17 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
+    def add_connection(self):
+        self.connections += 1
+        self.save()
+
+    def remove_connection(self):
+        self.connections -= 1
+        self.save()
+
+    class Meta:
+        ordering = ['name']
+
 class Message(models.Model):
     room = models.ForeignKey(Room, related_name='messages')
     handle = models.TextField()

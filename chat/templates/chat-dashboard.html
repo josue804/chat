@@ -1,16 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 <div class="jumbotron">
   <h1>Search or Create a Chat Room</h1>
   <hr>
   <form class="base-input-form" method="post">
     {% csrf_token %}
-    <div class="input-group base-input-form--form">
-      <input type="text" id="condition" class="form-control base-input-form--input" placeholder="e.g. Rhabdomyolysis" name="room" required="True">
+    <div class="input-group base-input-form--form room-search">
+      <input autocomplete="off" type="text" id="condition" class="form-control base-input-form--input" placeholder="e.g. Rhabdomyolysis" name="room" required="True">
       <span class="input-group-btn base-input-form--send">
         <button class="btn btn-md btn-custom glyphicon glyphicon-search" type="submit"></button>
       </span>
     </div>
+
   </form>
 </div>
 {% endblock content %}
+
+{% block extra_script %}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}

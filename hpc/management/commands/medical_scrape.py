@@ -4,6 +4,7 @@ from string import ascii_lowercase
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from collections import OrderedDict
+from chat.models import Room
 
 class Command(BaseCommand):
 
@@ -21,8 +22,4 @@ class Command(BaseCommand):
             result_groups = soup.find("div", class_="AZ_results")
             results = result_groups.findAll("li")
             for condition in results:
-                medical_conditions.append(condition.string)
-
-        thefile = open('medical_conditions.txt', 'w')
-        for condition in medical_conditions:
-          thefile.write("%s\n" % condition)
+                Room.objects.get_or_create(name=condition.string)

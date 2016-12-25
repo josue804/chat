@@ -4,24 +4,25 @@ from chat.models import Room, Message, GuestUser
 from chat.views import get_client_ip
 from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
 from lazysignup.utils import is_lazy_user
-
+from django.db.models import F
 
 # Connected to websocket.connect
 @channel_session_user_from_http
 def ws_connect(message):
     if is_lazy_user(message.user):
         client_ip = message.http_session['client_ip']
-        print(message.content['client'])
         guest = GuestUser.objects.get(ip_address=client_ip)
         message.channel_session['handle'] = guest.username
     else:
-        message.channel_session['handle'] = 'Real User'
+        message.channel_session['handle'] = 'Authenticated User Placeholder'
     try:
         # Work out room name from path (ignore slashes)
         split_path = message.content['path'].split("/")
         prefix = split_path[2]
-        room = split_path[3]
-        room_messages = Room.objects.get(slug=room).messages.all()
+        room_slug = split_path[3]
+        room = Room.objects.get(slug=room_slug)
+        room.add_connection()
+        room_messages = room.messages.all()
         message['text'] = room_messages
     except:
         return
@@ -42,4 +43,7 @@ def ws_message(message):
 # Connected to websocket.disconnect
 @channel_session_user_from_http
 def ws_disconnect(message):
+    split_path = message.content['path'].split("/")
+    room_slug = split_path[3]
+    Room.objects.get(slug=room_slug).remove_connection()
     Group("%s" % message.channel_session['room']).discard(message.reply_channel)

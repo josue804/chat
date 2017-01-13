@@ -1,9 +1,11 @@
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatsocket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat" + window.location.pathname);
+
 chatsocket.onmessage = function(e) {
-  data_array = e.data.split('/')
-  text = data_array[0]
-  handle = data_array[1]
+  data_array = e.data.split('GqbTvLGBHZ');
+  text = data_array[0];
+  handle = data_array[1];
+  debugger;
   $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
                             "<div class='chatbox-text--line-message-sent'>" +
                               "<p>" +
@@ -13,7 +15,7 @@ chatsocket.onmessage = function(e) {
                             "<small class='chatbox-text--author-sent'>" +
                             handle +
                             "</small>" +
-                          "</div>")
+                          "</div>");
   $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
 }
 

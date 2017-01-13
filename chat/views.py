@@ -41,7 +41,7 @@ class ChatRoomView(FormView):
 
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatRoomView, self).get_context_data(*args, **kwargs)
-        room = Room.objects.get(slug=self.kwargs['slug'])
+        room = Room.objects.filter(slug=self.kwargs['slug'])[0]
         kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
         if is_lazy_user(self.request.user):

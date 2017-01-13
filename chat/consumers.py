@@ -5,6 +5,7 @@ from chat.views import get_client_ip
 from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
 from lazysignup.utils import is_lazy_user
 from django.db.models import F
+from django.utils.safestring import mark_safe
 
 # Connected to websocket.connect
 @channel_session_user_from_http
@@ -37,7 +38,7 @@ def ws_message(message):
     room = Room.objects.get(slug=message.channel_session['room'])
     saved_message = Message.objects.create(room=room, handle=handle, message=message['text'])
     Group("%s" % message.channel_session['room']).send({
-        "text": saved_message.message+'/'+saved_message.formatted_handle,
+        "text": saved_message.message+'GqbTvLGBHZ'+saved_message.formatted_handle,
     })
 
 # Connected to websocket.disconnect

@@ -3929,7 +3929,7 @@ button.close {
     display: none !important; } }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: url("../img/ignasi_pattern_s.png"); }
 
 .navbar {
@@ -4082,27 +4082,36 @@ li.suggestion {
   .chatbox-text .chatbox-text--line-sent {
     margin-left: 5%;
     margin-top: 7%;
-    margin-right: 45%;
     text-align: left;
+    display: block;
+    word-wrap: break-word;
+    max-width: 50%;
     border-radius: 20px;
     font-size: 1.2em; }
   .chatbox-text .chatbox-text--line-message-sent {
     text-align: left;
-    background: rgba(255, 165, 0, 0.5);
+    background: #bbb;
     border-radius: 20px;
     padding: 20px 30px 20px 20px; }
+    .chatbox-text .chatbox-text--line-message-sent p {
+      color: #000;
+      font-size: 22px; }
   .chatbox-text .chatbox-text--line-received {
     margin-right: 5%;
     margin-left: 45%;
     margin-top: 7%;
     text-align: right;
+    display: block;
+    word-wrap: break-word;
     border-radius: 20px;
     font-size: 1.2em; }
   .chatbox-text .chatbox-text--line-message-received {
     text-align: right;
-    background: rgba(0, 0, 255, 0.5);
+    background-color: #a7db0d;
     border-radius: 20px;
     padding: 20px 20px 20px 30px; }
+    .chatbox-text .chatbox-text--line-message-received p {
+      color: black; }
   .chatbox-text .chatbox-text--author-sent {
     margin-left: 5%;
     text-align: left; }

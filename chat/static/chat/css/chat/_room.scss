@@ -32,31 +32,44 @@ $chatbox-width: 100%;
   .chatbox-text--line-sent {
     margin-left: 5%;
     margin-top: $chat-text-padding;
-    margin-right: 45%;
     text-align: left;
+    display: block;
+    word-wrap: break-word;
+    max-width: 50%;
     border-radius: 20px;
     font-size: 1.2em;
   }
 
   .chatbox-text--line-message-sent {
     text-align: left;
-    background: rgba(orange, 0.5);
+    background: #bbb;
     border-radius: 20px;
     padding: 20px 30px 20px 20px;
+
+    p {
+      color: #000;
+      font-size: 22px;
+    }
   }
   .chatbox-text--line-received {
     margin-right: 5%;
     margin-left: 45%;
     margin-top: $chat-text-padding;
     text-align: right;
+    display: block;
+    word-wrap: break-word;
     border-radius: 20px;
     font-size: 1.2em;
   }
   .chatbox-text--line-message-received {
     text-align: right;
-    background: rgba(blue, 0.5);
+    background-color: rgba(167,219,13,1);
     border-radius: 20px;
     padding: 20px 20px 20px 30px;
+
+    p {
+      color: black;
+    }
   }
 
   .chatbox-text--author-sent {

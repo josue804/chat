@@ -55,8 +55,10 @@ class ChatDashboardView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatDashboardView, self).get_context_data(*args, **kwargs)
+        active_rooms = Room.objects.filter(connections__gt=0)
         if is_lazy_user(self.request.user):
             kwargs['username'] = get_or_create_guest_account(self.request.user, self.request)
+        kwargs['active_rooms'] = active_rooms
         return kwargs
 
     def post(self, form):

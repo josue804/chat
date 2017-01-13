@@ -13,8 +13,16 @@
         <button class="btn btn-md btn-custom glyphicon glyphicon-search" type="submit"></button>
       </span>
     </div>
-
   </form>
+</div>
+
+<div class="list-group">
+  {% for room in active_rooms %}
+    <a href="{%url 'chat:chat-room' slug=room.slug%}" class="list-group-item">
+      <span class="badge">{{room.connections}} active users</span>
+      {{room.name}}
+    </a>
+  {% endfor %}
 </div>
 {% endblock content %}
 

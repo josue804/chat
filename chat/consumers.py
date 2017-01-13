@@ -27,8 +27,8 @@ def ws_connect(message):
     except:
         return
     # Save room in session and add us to the group
-    message.channel_session['room'] = room
-    Group("%s" % room).add(message.reply_channel)
+    message.channel_session['room'] = room.slug
+    Group("%s" % room.slug).add(message.reply_channel)
 
 # Connected to websocket.receive
 @channel_session_user_from_http

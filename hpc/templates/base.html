@@ -20,7 +20,7 @@
   <body>
       <!-- Static navbar -->
       <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -40,9 +40,19 @@
               </li>
               <ul class="dropdown-menu" aria-labelledby="user-dropdown">
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'logout'%}">Logout</a></li>
                 {% if user|is_lazy_user %}
-                <li><a href="#">Create Permanent Account (Coming Soon)</a></li>
+                <li>
+                  <a href="#">
+                  <h4>
+                    Create an account
+                  </h4>
+                  <small>
+                    All your comments and all other past activity will transfer to your new account.
+                  </small>
+                  </a>
+                </li>
+                {% else%}
+                <li><a href="{% url 'logout'%}">Logout</a></li>
                 {% endif %}
                 {% else %}
                 <li><a href="{% url 'login'%}">Login</a></li>

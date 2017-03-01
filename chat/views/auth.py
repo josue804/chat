@@ -3,7 +3,7 @@ from chat.forms import CustomUserCreateForm
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
-from chat.models import GuestUser, Message
+from chat.models import GuestUser, Message, CustomUser
 
 class CreateAccountView(FormView):
     template_name = "core/create-account.html"
@@ -26,5 +26,5 @@ class CreateAccountView(FormView):
                     message.save()
             user.set_password(form.cleaned_data['password'])
             user.save()
-            login(self.request, user)
-            return redirect('chat:dashboard')
+            login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return redirect('chat:chat-dashboard')

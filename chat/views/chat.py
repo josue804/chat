@@ -11,32 +11,12 @@ from chat.forms import ChatRoomForm
 from django.http import HttpResponse
 from django.core import serializers
 from django.db.models import Q
-
 from dal import autocomplete
 
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[-1]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    request.session['client_ip'] = ip
-    return ip
-
-def get_or_create_guest_account(user, request):
-    client_ip = get_client_ip(request)
-    try:
-        guest_user = GuestUser.objects.get(ip_address=client_ip)
-        return guest_user.username
-    except:
-        haikunator = Haikunator()
-        guest_name = haikunator.haikunate(token_length=0)
-        guest_user = GuestUser.objects.create(username=guest_name, temp_token=user.username, ip_address=client_ip)
-        return guest_user.username
 
 @method_decorator(allow_lazy_user, name='dispatch')
 class ChatRoomView(FormView):
-    template_name = "chat-room.html"
+    template_name = "chat/chat-room.html"
     form_class = ChatRoomForm
 
     def get_context_data(self, *args, **kwargs):
@@ -44,8 +24,6 @@ class ChatRoomView(FormView):
         room = Room.objects.filter(slug=self.kwargs['slug'])[0]
         kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
-        if is_lazy_user(self.request.user):
-            kwargs['username'] = get_or_create_guest_account(self.request.user, self.request)
         return kwargs
 
 
@@ -56,8 +34,6 @@ class ChatDashboardView(TemplateView):
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatDashboardView, self).get_context_data(*args, **kwargs)
         active_rooms = Room.objects.filter(connections__gt=0)
-        if is_lazy_user(self.request.user):
-            kwargs['username'] = get_or_create_guest_account(self.request.user, self.request)
         kwargs['active_rooms'] = active_rooms
         return kwargs
 

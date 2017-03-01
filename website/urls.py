@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from chat.views import auth, core
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^chat/', include('chat.urls')),
+    url(r'^$', core.DashboardView.as_view(), name='dashboard'),
+    url(r'^', include('chat.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'redirect_field_name': ''}, name='logout'),
+    url(r'^create-account/(?P<slug>[\w-]+)/(?P<token>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
 ]

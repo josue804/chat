@@ -42,12 +42,22 @@
                 {% if request.user.is_authenticated %}
                 {% if user|is_lazy_user %}
                 <li>
+                  <a href="{% url 'login'%}">
+                    <h4>
+                      Log In
+                    </h4>
+                    <small>
+                      Log into your account.
+                    </small>
+                  </a>
+                </li>
+                <li>
                   <a href="{% url 'create-account' slug=request.lazy_username token=request.lazy_token%}">
                   <h4>
                     Create an account
                   </h4>
                   <small>
-                    All your comments and other past activity will transfer to your new account.
+                    All your comments and other past activity can be transfered to your new account.
                   </small>
                   </a>
                 </li>

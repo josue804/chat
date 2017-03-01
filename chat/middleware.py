@@ -1,3 +1,6 @@
+import random
+import hashlib
+import time
 from lazysignup.decorators import allow_lazy_user
 from lazysignup.templatetags.lazysignup_tags import is_lazy_user
 from django.utils.decorators import method_decorator
@@ -10,10 +13,10 @@ class LazyUserMiddleware(object):
         self.get_response = get_response
 
     def __call__(self, request):
-        if is_lazy_user(request.user):
+        if is_lazy_user(request.user) or not request.user.username:
             lazy_user = self.get_or_create_guest_account(request.user, request)
-        request.lazy_username = lazy_user.username
-        request.lazy_token = lazy_user.temp_token
+            request.lazy_username = lazy_user.username
+            request.lazy_token = lazy_user.temp_token
         response = self.get_response(request)
         return response
 
@@ -28,6 +31,8 @@ class LazyUserMiddleware(object):
 
     def get_or_create_guest_account(self, user, request):
         client_ip = self.get_client_ip(request)
+        if not user.username:
+            user.username = hashlib.sha256((str(random.random()) + str(time.time())).encode('utf-8')).hexdigest()
         try:
             guest_user = GuestUser.objects.get(ip_address=client_ip)
             return guest_user

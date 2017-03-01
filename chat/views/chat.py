@@ -24,6 +24,10 @@ class ChatRoomView(FormView):
         room = Room.objects.filter(slug=self.kwargs['slug'])[0]
         kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
+        if is_lazy_user(self.request.user):
+            kwargs['username'] = self.request.lazy_username
+        else:
+            kwargs['username'] = self.request.user.username
         return kwargs
 
 
@@ -33,7 +37,7 @@ class ChatDashboardView(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatDashboardView, self).get_context_data(*args, **kwargs)
-        active_rooms = Room.objects.filter(connections__gt=0)
+        active_rooms = Room.objects.filter(connections__gt=0).order_by('-connections')
         kwargs['active_rooms'] = active_rooms
         return kwargs
 

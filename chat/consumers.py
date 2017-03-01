@@ -14,12 +14,12 @@ def ws_connect(message):
         guest = GuestUser.objects.get(ip_address=client_ip)
         message.channel_session['handle'] = guest.username
     else:
-        message.channel_session['handle'] = 'Authenticated User Placeholder'
+        message.channel_session['handle'] = message.user.username
     try:
         # Work out room name from path (ignore slashes)
         split_path = message.content['path'].split("/")
         prefix = split_path[2]
-        room_slug = split_path[3]
+        room_slug = split_path[4]
         room = Room.objects.get(slug=room_slug)
         room.add_connection()
         room_messages = room.messages.all()
@@ -44,7 +44,7 @@ def ws_message(message):
 @channel_session_user_from_http
 def ws_disconnect(message):
     split_path = message.content['path'].split("/")
-    room_slug = split_path[3]
+    room_slug = split_path[4]
     try:
         Room.objects.get(slug=room_slug).remove_connection()
         Group("%s" % message.channel_session['room']).discard(message.reply_channel)

@@ -14,11 +14,12 @@ class ChatRoomForm(forms.Form):
 
 class CustomUserCreateForm(forms.ModelForm):
     password_confirmation = forms.CharField(max_length=72, required=True, widget=forms.widgets.TextInput(attrs={'type': 'password'}))
+    preserve_lazy_data = forms.BooleanField(label="Save all my previous messages to my new account", initial=True)
 
     class Meta:
         model = CustomUser
         fields = ('email', 'first_name', 'last_name', 'username', 'password', 'password_confirmation',
-            'about', 'avatar',)
+            'about', 'avatar', 'preserve_lazy_data',)
         widgets = {
             'password': forms.widgets.TextInput(attrs={'type': 'password'}),
         }

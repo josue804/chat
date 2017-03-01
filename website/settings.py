@@ -81,6 +81,8 @@ AUTHENTICATION_BACKENDS = (
 
 ROOT_URLCONF = 'website.urls'
 
+LOGIN_REDIRECT_URL = '/chat/'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

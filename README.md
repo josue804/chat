@@ -23,7 +23,7 @@ Install project dependencies:
 
 Export the Django settings module:
 
-    $ export DJANGO_SETTINGS_MODULE=hpc.settings
+    $ export DJANGO_SETTINGS_MODULE=website.settings
 
 Run the webserver:
 

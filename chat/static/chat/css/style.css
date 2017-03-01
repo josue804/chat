@@ -4126,9 +4126,8 @@ button.close {
     display: none !important; } }
 
 body {
-  font-family: 'Montserrat', sans-serif;
   background: url("../img/ignasi_pattern_s.png");
-  font-size: 16px; }
+  font-size: 18px; }
 
 .navbar {
   background-color: #FF006C;

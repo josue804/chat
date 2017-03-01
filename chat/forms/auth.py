@@ -1,5 +1,6 @@
 from django import forms
 from chat.models import CustomUser
+from django.core.exceptions import ValidationError
 
 class ChatRoomForm(forms.Form):
     message = forms.CharField(
@@ -23,6 +24,12 @@ class CustomUserCreateForm(forms.ModelForm):
         widgets = {
             'password': forms.widgets.TextInput(attrs={'type': 'password'}),
         }
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if len(CustomUser.objects.filter(username=username)) > 0:
+            raise ValidationError('This username is taken')
+        return self.cleaned_data['username']
 
     def clean(self):
         data = self.cleaned_data

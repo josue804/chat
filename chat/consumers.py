@@ -1,7 +1,7 @@
 from channels import Group
 from channels.sessions import channel_session
-from chat.models import Room, Message, GuestUser
-from chat.views import get_client_ip
+from .models import Room, Message, GuestUser
+from .extras import get_client_ip
 from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
 from lazysignup.utils import is_lazy_user
 from django.db.models import F
@@ -46,5 +46,8 @@ def ws_message(message):
 def ws_disconnect(message):
     split_path = message.content['path'].split("/")
     room_slug = split_path[3]
-    Room.objects.get(slug=room_slug).remove_connection()
-    Group("%s" % message.channel_session['room']).discard(message.reply_channel)
+    try:
+        Room.objects.get(slug=room_slug).remove_connection()
+        Group("%s" % message.channel_session['room']).discard(message.reply_channel)
+    except:
+        pass

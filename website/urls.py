@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from .views import DashboardView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^$', DashboardView.as_view(), name='dashboard'),
     url(r'^admin/', admin.site.urls),
     url(r'^chat/', include('chat.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),

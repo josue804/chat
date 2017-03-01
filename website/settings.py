@@ -24,6 +24,10 @@ SECRET_KEY = '^)@95pniyq7%zv9!bux5h9h7lk!5u#@-&g%4!bbf5+d!mrvpjh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Custom User Definition
+LAZYSIGNUP_USER_MODEL = 'chat.CustomUser'
+AUTH_USER_MODEL = 'chat.CustomUser'
+
 ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com',
                 'localhost']
 
@@ -39,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hpc',
+    'website',
     'chat',
     'channels',
     'autoslug',
@@ -74,7 +78,7 @@ AUTHENTICATION_BACKENDS = (
   'lazysignup.backends.LazySignupBackend',
 )
 
-ROOT_URLCONF = 'hpc.urls'
+ROOT_URLCONF = 'website.urls'
 
 TEMPLATES = [
     {
@@ -92,7 +96,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hpc.wsgi.application'
+WSGI_APPLICATION = 'website.wsgi.application'
 
 
 # Database

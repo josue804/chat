@@ -1,6 +1,5 @@
 from django import forms
-from dal import autocomplete
-from .models import Room
+from chat.models import CustomUser
 
 class ChatRoomForm(forms.Form):
     message = forms.CharField(

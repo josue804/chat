@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.utils.text import slugify
-from .models import Room, Message, GuestUser
+from chat.models import Room, Message, GuestUser
 from lazysignup.decorators import allow_lazy_user
 from lazysignup.templatetags.lazysignup_tags import is_lazy_user
 from django.utils.decorators import method_decorator
 from haikunator import Haikunator
-from .forms import ChatRoomForm
+from chat.forms import ChatRoomForm
 from django.http import HttpResponse
 from django.core import serializers
 from django.db.models import Q
@@ -51,7 +51,7 @@ class ChatRoomView(FormView):
 
 @method_decorator(allow_lazy_user, name='dispatch')
 class ChatDashboardView(TemplateView):
-    template_name = "chat-dashboard.html"
+    template_name = "chat/chat-dashboard.html"
 
     def get_context_data(self, *args, **kwargs):
         kwargs = super(ChatDashboardView, self).get_context_data(*args, **kwargs)

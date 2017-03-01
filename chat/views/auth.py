@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from chat.forms import CustomUserCreateForm
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -23,4 +24,7 @@ class CreateAccountView(FormView):
                 for message in Message.objects.filter(handle=temp_user.username):
                     message.handle = user.username
                     message.save()
-            return redirect('dashboard')
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            login(self.request, user)
+            return redirect('chat:dashboard')

@@ -4,10 +4,17 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from chat.models import GuestUser, Message, CustomUser
+from lazysignup.utils import is_lazy_user
 
 class CreateAccountView(FormView):
     template_name = "core/create-account.html"
     form_class = CustomUserCreateForm
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_anonymous() or is_lazy_user(request.user):
+            return super(CreateAccountView, self).get(request, *args, **kwargs)
+        else:
+            return redirect('dashboard')
 
     def get_initial(self):
         initial = super(CreateAccountView, self).get_initial()

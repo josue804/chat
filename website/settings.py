@@ -163,4 +163,4 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'chat/static/chat'),
 )
 
-LOGOUT_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = '/chat/'

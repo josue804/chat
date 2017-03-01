@@ -7,7 +7,7 @@
     {% csrf_token %}
     {%bootstrap_form form%}
     {%bootstrap_button 'Login' 'submit' 'btn btn-md btn-custom'%}
-    <a href="{% url 'chat:chat-dashboard'%}"class="btn btn-custom btn-md">Continue as Guest</a>
+    <a href="{% url 'logout'%}"class="btn btn-custom btn-md">Continue as Guest</a>
   </form>
 </div>
 {% endblock content %}

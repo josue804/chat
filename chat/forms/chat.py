@@ -1,5 +1,4 @@
 from django import forms
-from dal import autocomplete
 from chat.models import Room
 
 class ChatRoomForm(forms.Form):

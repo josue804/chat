@@ -20,24 +20,25 @@ class LazyUserMiddleware(object):
         response = self.get_response(request)
         return response
 
-    def get_client_ip(self, request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[-1]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        request.session['client_ip'] = ip
-        return ip
+    # def get_client_ip(self, request):
+    #     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    #     if x_forwarded_for:
+    #         ip = x_forwarded_for.split(',')[-1]
+    #     else:
+    #         ip = request.META.get('REMOTE_ADDR')
+    #     request.session['client_ip'] = ip
+    #     return ip
 
     def get_or_create_guest_account(self, user, request):
-        client_ip = self.get_client_ip(request)
+        # client_ip = self.get_client_ip(request)
+        session_key = request.session.session_key
         if not user.username:
             user.username = hashlib.sha256((str(random.random()) + str(time.time())).encode('utf-8')).hexdigest()
         try:
-            guest_user = GuestUser.objects.get(ip_address=client_ip)
+            guest_user = GuestUser.objects.get(session_key=session_key)
             return guest_user
         except:
             haikunator = Haikunator()
             guest_name = haikunator.haikunate(token_length=0)
-            guest_user = GuestUser.objects.create(username=guest_name, temp_token=user.username, ip_address=client_ip)
+            guest_user = GuestUser.objects.create(username=guest_name, temp_token=user.username, session_key=session_key)
             return guest_user

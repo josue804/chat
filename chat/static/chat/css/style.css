@@ -4126,6 +4126,7 @@ button.close {
     display: none !important; } }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   background: url("../img/ignasi_pattern_s.png");
   font-size: 18px; }
 
@@ -4253,6 +4254,9 @@ li.suggestion {
   color: #FFF;
   background-color: #FF3389; }
 
+.heavy-header {
+  font-weight: 600; }
+
 .chatbox-header {
   width: 100%;
   border-top: 10px solid #031634;
@@ -4349,3 +4353,10 @@ li.suggestion {
 
 .room-search {
   display: block; }
+
+.general-form label {
+  border-left: 3px solid #FF006C;
+  padding-left: 5px; }
+
+.general-form .help-block {
+  color: #fff; }

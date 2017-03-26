@@ -8,7 +8,7 @@ class GuestUser(models.Model):
     username = models.CharField(max_length=30)
     date_created = models.DateTimeField(auto_now_add=True)
     temp_token = models.CharField(max_length=500)
-    ip_address = models.GenericIPAddressField(null=True)
+    session_key = models.CharField(max_length=500, null=True)
 
     def __str__(self):
         return self.username

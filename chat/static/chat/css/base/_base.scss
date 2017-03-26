@@ -1,12 +1,14 @@
+$background-pink : #FF006C;
+
 body {
-	// font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	background: url('../img/ignasi_pattern_s.png'); // Obtained via https://subtlepatterns.com/
 	font-size: 18px;
 }
 
 // Navbar
 .navbar {
-	background-color: #FF006C;
+	background-color: $background-pink;
 	border: 0;
 	border-radius: 0px;
 }
@@ -23,7 +25,7 @@ body {
     color: #FFF;
 		line-height: 45px;
 		font-size: 1.2em;
-		background: #FF006C;
+		background: $background-pink;
 		margin-top: 0;
 }
 
@@ -48,7 +50,7 @@ body {
 }
 
 .dropdown-menu {
-	background-color: #FF006C;
+	background-color: $background-pink;
 	padding: 0;
 }
 
@@ -148,7 +150,7 @@ li.suggestion {
 
 .btn-custom {
 	color: #FFF;
-	background-color: #FF006C;
+	background-color: $background-pink;
 }
 
 .btn-custom:hover {
@@ -158,10 +160,14 @@ li.suggestion {
 
 .btn-chat {
 	color: #FFF;
-	background: #FF006C;
+	background: $background-pink;
 }
 
 .btn-chat:hover {
 	color: #FFF;
 	background-color: #FF3389;
+}
+
+.heavy-header {
+	font-weight: 600;
 }

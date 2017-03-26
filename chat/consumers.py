@@ -9,9 +9,11 @@ from django.utils.safestring import mark_safe
 # Connected to websocket.connect
 @channel_session_user_from_http
 def ws_connect(message):
+    if '/room/' not in message.content['path']:
+        return
     if is_lazy_user(message.user):
-        client_ip = message.http_session['client_ip']
-        guest = GuestUser.objects.get(ip_address=client_ip)
+        session_key = message.http_session.session_key
+        guest = GuestUser.objects.get(session_key=session_key)
         message.channel_session['handle'] = guest.username
     else:
         message.channel_session['handle'] = message.user.username
@@ -43,6 +45,8 @@ def ws_message(message):
 # Connected to websocket.disconnect
 @channel_session_user_from_http
 def ws_disconnect(message):
+    if '/room/' not in message.content['path']:
+        return
     split_path = message.content['path'].split("/")
     room_slug = split_path[4]
     try:

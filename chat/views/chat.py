@@ -24,10 +24,7 @@ class ChatRoomView(FormView):
         room = Room.objects.filter(slug=self.kwargs['slug'])[0]
         kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
-        if is_lazy_user(self.request.user):
-            kwargs['username'] = self.request.lazy_username
-        else:
-            kwargs['username'] = self.request.user.username
+        kwargs['username'] = self.request.user.get_username()
         return kwargs
 
 

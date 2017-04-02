@@ -3,6 +3,7 @@ from autoslug import AutoSlugField
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from chat.extras import get_local_time
+from .auth import CustomUser
 
 # Create your models here.
 class Room(models.Model):
@@ -29,6 +30,7 @@ class Message(models.Model):
     handle = models.TextField()
     message = models.TextField()
     timestamp = models.DateTimeField(default=get_local_time, db_index=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.message

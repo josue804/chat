@@ -1,6 +1,6 @@
 from channels import Group
 from channels.sessions import channel_session
-from .models import Room, Message, GuestUser
+from .models import Room, Message, GuestUser, CustomUser
 from channels.auth import http_session_user, channel_session_user, channel_session_user_from_http
 from lazysignup.utils import is_lazy_user
 from django.db.models import F
@@ -11,12 +11,7 @@ from django.utils.safestring import mark_safe
 def ws_connect(message):
     if '/room/' not in message.content['path']:
         return
-    if is_lazy_user(message.user):
-        session_key = message.http_session.session_key
-        guest = GuestUser.objects.get(session_key=session_key)
-        message.channel_session['handle'] = guest.username
-    else:
-        message.channel_session['handle'] = message.user.username
+    message.channel_session['handle'] = message.user.get_username()
     try:
         # Work out room name from path (ignore slashes)
         split_path = message.content['path'].split("/")
@@ -36,8 +31,12 @@ def ws_connect(message):
 @channel_session_user_from_http
 def ws_message(message):
     handle = message.channel_session.get('handle')
+    if message.user.is_anonymous():
+        user = CustomUser.objects.get(nickname=handle)
+    else:
+        user = message.user
     room = Room.objects.get(slug=message.channel_session['room'])
-    saved_message = Message.objects.create(room=room, handle=handle, message=message['text'])
+    saved_message = Message.objects.create(room=room, handle=handle, message=message['text'], user=user)
     Group("%s" % message.channel_session['room']).send({
         "text": saved_message.message+'GqbTvLGBHZ'+saved_message.formatted_handle,
     })

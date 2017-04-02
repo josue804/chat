@@ -3,6 +3,7 @@ from autoslug import AutoSlugField
 from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from chat.extras import get_local_time
+from lazysignup.models import LazyUser
 
 class GuestUser(models.Model):
     username = models.CharField(max_length=30)
@@ -17,6 +18,8 @@ class GuestUser(models.Model):
 class CustomUser(AbstractUser):
     about = models.TextField(max_length=1000, blank=True, null=True)
     avatar = models.ImageField(blank=True, null=True, upload_to='avatar')
+    lazy_key = models.CharField(max_length=255, blank=True, null=True)
+    nickname = models.CharField(max_length=255, blank=True, null=True)
 
     @property
     def full_name(self):
@@ -24,3 +27,10 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def get_username(self):
+        try:
+            LazyUser.objects.get(user__username=self.username)
+            return self.nickname
+        except:
+            return self.username

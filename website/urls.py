@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^', include('chat.urls')),
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'redirect_field_name': ''}, name='logout'),
-    url(r'^create-account/(?P<slug>[\w-]+)/(?P<token>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
+    url(r'^create-account/(?P<slug>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
+    url(r'^account/(?P<pk>\d+)/$', auth.AccountDetailView.as_view(), name='account-detail'),
 ]

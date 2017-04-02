@@ -16,14 +16,14 @@ body {
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
 		color: #FFF;
 		font-weight: 700;
-		line-height: 45px;
+		// line-height: 45px;
 		font-size: 1.5em;
 }
 
 .navbar-default .navbar-nav > li > a,
 .navbar-default .navbar-nav > li > a:hover {
     color: #FFF;
-		line-height: 45px;
+		// line-height: 45px;
 		font-size: 1.2em;
 		background: $background-pink;
 		margin-top: 0;
@@ -49,6 +49,11 @@ body {
 	background-color: #CC0056;
 }
 
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+
+//Dropdown
 .dropdown-menu {
 	background-color: $background-pink;
 	padding: 0;

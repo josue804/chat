@@ -1,4 +1,4 @@
-.general-form {
+.general-field {
 
    label {
     border-left: 3px solid $background-pink;
@@ -7,5 +7,9 @@
 
   .help-block {
     color: #fff
+  }
+
+  .auth-file-upload {
+    padding-left: 5px;
   }
 }

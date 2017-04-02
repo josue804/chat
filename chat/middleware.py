@@ -3,9 +3,12 @@ import hashlib
 import time
 from lazysignup.decorators import allow_lazy_user
 from lazysignup.templatetags.lazysignup_tags import is_lazy_user
+from lazysignup.models import LazyUser
 from django.utils.decorators import method_decorator
 from haikunator import Haikunator
-from chat.models import Room, Message, GuestUser
+from chat.models import Room, Message, CustomUser
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 class LazyUserMiddleware(object):
 
@@ -13,32 +16,20 @@ class LazyUserMiddleware(object):
         self.get_response = get_response
 
     def __call__(self, request):
-        if is_lazy_user(request.user) or not request.user.username:
-            lazy_user = self.get_or_create_guest_account(request.user, request)
-            request.lazy_username = lazy_user.username
-            request.lazy_token = lazy_user.temp_token
+        if request.user.is_anonymous() and not is_lazy_user(request.user):
+            new_lazy_user = self.get_or_create_guest_account(request.user, request)
+            login(request, new_lazy_user.user, 'django.contrib.auth.backends.ModelBackend')
         response = self.get_response(request)
         return response
 
-    # def get_client_ip(self, request):
-    #     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    #     if x_forwarded_for:
-    #         ip = x_forwarded_for.split(',')[-1]
-    #     else:
-    #         ip = request.META.get('REMOTE_ADDR')
-    #     request.session['client_ip'] = ip
-    #     return ip
-
     def get_or_create_guest_account(self, user, request):
-        # client_ip = self.get_client_ip(request)
-        session_key = request.session.session_key
-        if not user.username:
-            user.username = hashlib.sha256((str(random.random()) + str(time.time())).encode('utf-8')).hexdigest()
-        try:
-            guest_user = GuestUser.objects.get(session_key=session_key)
-            return guest_user
-        except:
-            haikunator = Haikunator()
+        custom_user, username = LazyUser.objects.create_lazy_user()
+        haikunator = Haikunator()
+        usernames = [user.username for user in CustomUser.objects.all()]
+        guest_name = haikunator.haikunate(token_length=0)
+        while guest_name in usernames:
             guest_name = haikunator.haikunate(token_length=0)
-            guest_user = GuestUser.objects.create(username=guest_name, temp_token=user.username, session_key=session_key)
-            return guest_user
+        custom_user.nickname = guest_name
+        custom_user.save()
+        new_lazy_user = LazyUser.objects.get(user__username=username)
+        return new_lazy_user

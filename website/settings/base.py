@@ -31,7 +31,8 @@ AUTH_USER_MODEL = 'chat.CustomUser'
 ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com',
                 'localhost']
 
-
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
+MEDIA_URL = '/media/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'lazysignup',
     'bootstrap3',
     'haikunator',
+    'django_extensions',
 ]
 
 CHANNEL_LAYERS = {

@@ -10,6 +10,7 @@ Django==1.10.3
 django-autocomplete-light==3.2.1
 django-autoslug==1.9.3
 django-bootstrap3==7.1.0
+django-extensions==1.7.8
 django-lazysignup==1.1.1
 -e git+https://github.com/jrief/django-websocket-redis@31723a7ae2de62a88c2b0d17950611052730f244#egg=django_websocket_redis
 gevent==1.1.2

@@ -7,10 +7,12 @@ constantly==15.1.0
 daphne==0.15.0
 dj-database-url==0.4.1
 Django==1.10.3
+django-appconf==1.0.2
 django-autocomplete-light==3.2.1
 django-autoslug==1.9.3
 django-bootstrap3==7.1.0
 django-extensions==1.7.8
+django-imagekit==4.0
 django-lazysignup==1.1.1
 -e git+https://github.com/jrief/django-websocket-redis@31723a7ae2de62a88c2b0d17950611052730f244#egg=django_websocket_redis
 gevent==1.1.2
@@ -20,6 +22,7 @@ haikunator==2.1.0
 incremental==16.10.1
 msgpack-python==0.4.8
 olefile==0.44
+pilkit==2.0
 Pillow==4.0.0
 psycopg2==2.6.2
 redis==2.10.5

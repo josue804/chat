@@ -1,11 +1,13 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+{% load imagekit %}
 
 {% block content %}
 <div class="container">
  <div class="user-details">
    <h1>{{user.full_name}}</h1>
-   <h1>{{user.about}}</h1>
-   <img src="{{user.avatar}}" alt="" />
+   {% generateimage 'user-account-avatar' source=user.avatar %}
+   <p>{{user.about}}</p>
  </div>
 </div>
 {% endblock content %}

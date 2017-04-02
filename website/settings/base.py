@@ -31,6 +31,16 @@ AUTH_USER_MODEL = 'chat.CustomUser'
 ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com',
                 'localhost']
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'chat/static/chat'),
+)
+
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media/')
 MEDIA_URL = '/media/'
 # Application definition
@@ -51,6 +61,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'haikunator',
     'django_extensions',
+    'imagekit',
 ]
 
 CHANNEL_LAYERS = {
@@ -153,14 +164,5 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'chat/static/chat'),
-)
 
 LOGOUT_REDIRECT_URL = '/chat/'

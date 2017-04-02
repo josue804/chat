@@ -28,7 +28,7 @@ def ws_connect(message):
     Group("%s" % room.slug).add(message.reply_channel)
 
 # Connected to websocket.receive
-@channel_session_user_from_http
+@channel_session_user
 def ws_message(message):
     handle = message.channel_session.get('handle')
     if message.user.is_anonymous():
@@ -42,7 +42,7 @@ def ws_message(message):
     })
 
 # Connected to websocket.disconnect
-@channel_session_user_from_http
+@channel_session_user
 def ws_disconnect(message):
     if '/room/' not in message.content['path']:
         return

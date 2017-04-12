@@ -41,7 +41,8 @@ class ChatDashboardView(TemplateView):
     def post(self, form):
         unslugified_room = form.POST.get('room').title()
         room_slug = slugify(unslugified_room)
-        Room.objects.get_or_create(name=unslugified_room, slug=room_slug)
+        if not Room.objects.filter(slug=room_slug):
+            Room.objects.create(name=unslugified_room, slug=room_slug)
         return redirect('chat:chat-room', slug=room_slug)
 
 def room_autocomplete(request, name):

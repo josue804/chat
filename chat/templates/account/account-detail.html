@@ -5,9 +5,38 @@
 {% block content %}
 <div class="container">
  <div class="user-details">
-   <h1>{{user.full_name}}</h1>
-   {% generateimage 'user-account-avatar' source=user.avatar %}
-   <p>{{user.about}}</p>
+   <div class="row">
+     <div class="col-md-3">
+       <div class="user-details--basic">
+         <h1>{{user.full_name}}</h1>
+         {% generateimage 'user-account-avatar' source=user.avatar %}
+         <div class="user-details--basic--extra">
+           <p>Good Samaritan Hospital</p>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-9">
+       <div class="user-details--user-info">
+         <div class="user-details--user-info--about">
+           <h2>About Me</h2>
+           <hr>
+           <p>{{user.about}}</p>
+         </div>
+         <br>
+         <div class="user-details--user-info-topics">
+           <h2>My Topics</h2>
+           <hr>
+           <ul>
+             <li>Rhabdomyolysis</li>
+             <li>Surgery Recovery</li>
+             <li>Compartment Syndrome</li>
+             <li>Emotional Support</li>
+             <li>Fasciotimy</li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
  </div>
 </div>
 {% endblock content %}

@@ -5,6 +5,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from collections import OrderedDict
 from chat.models import Room
+from django.utils.text import slugify
 
 class Command(BaseCommand):
 
@@ -22,4 +23,4 @@ class Command(BaseCommand):
             result_groups = soup.find("div", class_="AZ_results")
             results = result_groups.findAll("li")
             for condition in results:
-                Room.objects.get_or_create(name=condition.string)
+                Room.objects.get_or_create(name=condition.string, slug=slugify(condition.string))

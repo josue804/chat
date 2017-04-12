@@ -1,0 +1,44 @@
+.user-details {
+
+  margin-top: 5em;
+
+  .user-details--basic {
+    position: absolute;
+    background: white;
+    padding: 0 1.5em 1.5em;
+    // border-radius: 3px;
+    box-shadow: -8px 6px rgba(49, 185, 127, 0.17);
+    // box-shadow: -8px 6px #00ff93;
+
+    img {
+      position: relative;
+      border-radius: 5px;
+    }
+
+    h1 {
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+  }
+
+  .user-details--user-info {
+    position: absolute;
+    background: white;
+    margin-left: 3em;
+    padding: 0 1.5em 1.5em;
+    width: 100%;
+    box-shadow: -8px 6px rgba(49, 185, 127, 0.17);
+
+    .user-details--user-info-topics {
+      ul {
+        columns: 2;
+        list-style: none;
+        padding: 0 0 0 1em;
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

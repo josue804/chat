@@ -3,41 +3,43 @@
   margin-top: 5em;
 
   .user-details--basic {
-    position: absolute;
     background: white;
-    padding: 0 1.5em 1.5em;
-    // border-radius: 3px;
+    padding: .75em 1.5em 1.5em;
     box-shadow: -8px 6px rgba(49, 185, 127, 0.17);
-    // box-shadow: -8px 6px #00ff93;
 
     img {
-      position: relative;
       border-radius: 5px;
       margin-bottom: 10px;
+      margin-top: 5px;
     }
 
     h1 {
       font-weight: 600;
       letter-spacing: 2px;
     }
+
+    .user-details--edit-profile {
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
   }
 
   .user-details--user-info {
-    position: absolute;
     background: white;
-    margin-left: 3em;
-    padding: 0 1.5em 1.5em;
+    padding: .75em 1.5em 1.5em;
     width: 100%;
     box-shadow: -8px 6px rgba(49, 185, 127, 0.17);
 
-    .two-column-list {
-      ul {
-        columns: 2;
-        list-style: none;
-        padding: 0 0 0 1em;
+    @media only screen  and (min-width : 1224px) {
+      .two-column-list {
+        ul {
+          columns: 2;
+          list-style: none;
+          padding: 0 0 0 1em;
 
-        li {
-          margin-bottom: 5px;
+          li {
+            margin-bottom: 5px;
+          }
         }
       }
     }

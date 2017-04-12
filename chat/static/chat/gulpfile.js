@@ -26,6 +26,7 @@ var bootstrapJsDir = bootstrapDir + '/javascripts/bootstrap';
 var jsFiles = [
   './js/chat-room.js',
   './js/chat-dashboard.js',
+  './js/anchorme.js',
   bootstrapJsDir + '/alert.js',
   bootstrapJsDir + '/transition.js',
   bootstrapJsDir + '/collapse.js',

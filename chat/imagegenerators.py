@@ -3,6 +3,6 @@ from imagekit import ImageSpec, register
 from imagekit.processors import ResizeToFill, ResizeToFit, SmartResize
 
 class UserAccountAvatar(ImageSpec):
-    processors = [ResizeToFill(264, 264),]
+    processors = [ResizeToFill(208, 208),]
 
 register.generator('user-account-avatar', UserAccountAvatar)

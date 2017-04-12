@@ -4368,27 +4368,28 @@ li.suggestion {
 .user-details {
   margin-top: 5em; }
   .user-details .user-details--basic {
-    position: absolute;
     background: white;
-    padding: 0 1.5em 1.5em;
+    padding: .75em 1.5em 1.5em;
     box-shadow: -8px 6px rgba(49, 185, 127, 0.17); }
     .user-details .user-details--basic img {
-      position: relative;
       border-radius: 5px;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      margin-top: 5px; }
     .user-details .user-details--basic h1 {
       font-weight: 600;
       letter-spacing: 2px; }
+    .user-details .user-details--basic .user-details--edit-profile {
+      padding-bottom: 10px;
+      margin-bottom: 10px; }
   .user-details .user-details--user-info {
-    position: absolute;
     background: white;
-    margin-left: 3em;
-    padding: 0 1.5em 1.5em;
+    padding: .75em 1.5em 1.5em;
     width: 100%;
     box-shadow: -8px 6px rgba(49, 185, 127, 0.17); }
-    .user-details .user-details--user-info .two-column-list ul {
-      columns: 2;
-      list-style: none;
-      padding: 0 0 0 1em; }
-      .user-details .user-details--user-info .two-column-list ul li {
-        margin-bottom: 5px; }
+    @media only screen and (min-width: 1224px) {
+      .user-details .user-details--user-info .two-column-list ul {
+        columns: 2;
+        list-style: none;
+        padding: 0 0 0 1em; }
+        .user-details .user-details--user-info .two-column-list ul li {
+          margin-bottom: 5px; } }

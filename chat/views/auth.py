@@ -38,3 +38,8 @@ class CreateAccountView(FormView):
 
 class AccountDetailView(TemplateView):
     template_name = "account/account-detail.html"
+
+    def get_context_data(self, *args, **kwargs):
+        kwargs = super(AccountDetailView, self).get_context_data(*args, **kwargs)
+        kwargs['profile'] = CustomUser.objects.get(pk=kwargs['pk'])
+        return kwargs

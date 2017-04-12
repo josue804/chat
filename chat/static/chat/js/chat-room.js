@@ -1,11 +1,17 @@
 var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
 var chatsocket = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + "/chat" + window.location.pathname);
 
+function linkify(text) {
+    var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '" target="_blank">' + url + '</a>';
+    });
+}
+
 chatsocket.onmessage = function(e) {
   data_array = e.data.split('GqbTvLGBHZ');
   text = data_array[0];
   handle = data_array[1];
-  debugger;
   $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
                             "<div class='chatbox-text--line-message-sent'>" +
                               "<p>" +
@@ -34,7 +40,8 @@ chatsocket.onopen = function() {
         $input.val("");
         $input.height("18px");
         $input.focus();
-        chatsocket.send(message);
+        anchored_message = anchorme(message, {attributes:[{name:"target", value:"_blank"}]});
+        chatsocket.send(anchored_message);
       });
     });
   var textarea = document.querySelector('textarea');

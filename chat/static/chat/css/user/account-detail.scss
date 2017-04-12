@@ -13,6 +13,7 @@
     img {
       position: relative;
       border-radius: 5px;
+      margin-bottom: 10px;
     }
 
     h1 {
@@ -29,7 +30,7 @@
     width: 100%;
     box-shadow: -8px 6px rgba(49, 185, 127, 0.17);
 
-    .user-details--user-info-topics {
+    .two-column-list {
       ul {
         columns: 2;
         list-style: none;

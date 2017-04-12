@@ -9,9 +9,16 @@
      <div class="col-md-3">
        <div class="user-details--basic">
          <h1>{{user.full_name}}</h1>
-         {% generateimage 'user-account-avatar' source=user.avatar %}
+         {% generateimage 'user-account-avatar' source=user.avatar -- class='user-details--basic-avatar'%}
          <div class="user-details--basic--extra">
-           <p>Good Samaritan Hospital</p>
+           <p>
+             <small><strong>Good Samaritan Hospital</strong></small>
+             <br>
+             <small><strong>Portland, OR, USA</strong></small>
+           </p>
+         </div>
+         <div class="user-details--private-message">
+           <a href="#" class="btn btn-md btn-primary">Send me a Message!</a>
          </div>
        </div>
      </div>
@@ -23,8 +30,20 @@
            <p>{{user.about}}</p>
          </div>
          <br>
-         <div class="user-details--user-info-topics">
-           <h2>My Topics</h2>
+         <div class="user-details--user-info-topics two-column-list">
+           <h2>Topic Interests</h2>
+           <hr>
+           <ul>
+             <li>Rhabdomyolysis</li>
+             <li>Surgery Recovery</li>
+             <li>Compartment Syndrome</li>
+             <li>Emotional Support</li>
+             <li>Fasciotimy</li>
+           </ul>
+         </div>
+         <br>
+         <div class="user-details--user-info-subscriptions two-column-list">
+           <h2>Channel Subscriptions</h2>
            <hr>
            <ul>
              <li>Rhabdomyolysis</li>

@@ -20,5 +20,5 @@ else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings.production")
 
 application = get_wsgi_application()
-application = WhiteNoise(application, root=os.path.join(settings.PROJECT_DIR, 'staticfiles'))
-application.add_files(os.path.join(settings.PROJECT_DIR, 'media', 'CACHE', 'images', 'avatar'))
+application = WhiteNoise(application, root=os.path.join(settings.STATIC_ROOT))
+application.add_files(os.path.join(settings.MEDIA_ROOT))

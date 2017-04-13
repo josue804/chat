@@ -21,4 +21,4 @@ else:
 
 application = get_wsgi_application()
 application = WhiteNoise(application, root=os.path.join(settings.PROJECT_DIR, 'staticfiles'))
-application.add_files = WhiteNoise(os.path.join('media', 'CACHE', 'images', 'avatar'), prefix=settings.PROJECT_DIR)
+application.add_files(os.path.join('media', 'CACHE', 'images', 'avatar'), prefix=settings.PROJECT_DIR)

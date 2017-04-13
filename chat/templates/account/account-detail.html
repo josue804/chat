@@ -12,7 +12,9 @@
          {% if profile == request.user %}
            <a href="#" class="user-details--edit-profile">Edit Profile</a>
          {% endif %}
-         {% generateimage 'user-account-avatar' source=profile.avatar -- class='user-details--basic-avatar'%}
+         {% if profile.avatar %}
+           {% generateimage 'user-account-avatar' source=profile.avatar -- class='user-details--basic-avatar'%}
+         {% endif %}
          <div class="user-details--basic--extra">
            <p>
              <small><strong>Good Samaritan Hospital</strong></small>

@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com',
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, 'chat/static/chat'),
-    os.path.join(PROJECT_DIR, 'media/'),
 )
 
 # Application definition

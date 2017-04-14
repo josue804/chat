@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 from chat.views import auth, core
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,5 +30,5 @@ urlpatterns = [
     url(r'^create-account/(?P<slug>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
     url(r'^account/(?P<pk>\d+)/$', auth.AccountDetailView.as_view(), name='account-detail'),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

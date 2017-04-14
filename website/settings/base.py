@@ -183,6 +183,8 @@ LOGGING = {
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
+
+ADMIN_MEDIA_PREFIX = '/media/admin/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 

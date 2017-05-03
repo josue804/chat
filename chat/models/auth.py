@@ -21,6 +21,13 @@ class CustomUser(AbstractUser):
     lazy_key = models.CharField(max_length=255, blank=True, null=True)
     nickname = models.CharField(max_length=255, blank=True, null=True)
 
+    hospital_location = models.CharField(max_length=100, blank=True, null=True)
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+
+    topic_interests = models.TextField(blank=True, null=True)
+
     @property
     def full_name(self):
         return self.first_name + ' ' + self.last_name

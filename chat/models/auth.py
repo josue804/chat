@@ -27,6 +27,7 @@ class CustomUser(AbstractUser):
     country = models.CharField(max_length=100, blank=True, null=True)
 
     topic_interests = models.TextField(blank=True, null=True)
+    subscriptions = models.ManyToManyField('chat.Room')
 
     @property
     def full_name(self):

@@ -187,4 +187,11 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/media/'
 
+## Static files stored on heroku
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+## Media files stored on S3
+DEFAULT_FILE_STORAGE = 'chat.imagegenerators.CustomS3Boto3Storage'
+AWS_ACCESS_KEY_ID = SECRET_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = SECRET_KEY = os.environ.get('AWS_STORAGE_BUCKET_NAME')

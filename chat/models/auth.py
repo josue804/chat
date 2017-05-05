@@ -27,11 +27,21 @@ class CustomUser(AbstractUser):
     country = models.CharField(max_length=100, blank=True, null=True)
 
     topic_interests = models.TextField(blank=True, null=True)
-    subscriptions = models.ManyToManyField('chat.Room')
+    subscriptions = models.ManyToManyField('chat.Room', null=True, blank=True)
 
     @property
     def full_name(self):
         return self.first_name + ' ' + self.last_name
+
+    @property
+    def topics(self):
+        return self.topic_interests.split(',')
+
+    def get_address(self):
+        return self.city + ', ' + self.state + ' ' + self.country
+
+    def has_more_information(self):
+        return not(not self.topic_interests and not self.subscriptions.all() and not self.about)
 
     def __str__(self):
         return self.username

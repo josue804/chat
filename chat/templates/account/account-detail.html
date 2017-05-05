@@ -10,16 +10,16 @@
        <div class="user-details--basic">
          <h1>{{profile.full_name}}</h1>
          {% if profile == request.user %}
-           <a href="#" class="user-details--edit-profile">Edit Profile</a>
+           <a href="{% url 'account-edit' pk=user.pk%}" class="user-details--edit-profile">Edit Profile</a>
          {% endif %}
          {% if profile.avatar %}
            {% generateimage 'user-account-avatar' source=profile.avatar -- class='user-details--basic-avatar'%}
          {% endif %}
          <div class="user-details--basic--extra">
            <p>
-             <small><strong>Good Samaritan Hospital</strong></small>
+             <small><strong>{{profile.hospital_location}}</strong></small>
              <br>
-             <small><strong>Portland, OR, USA</strong></small>
+             <small><strong>{{profile.get_address}}</strong></small>
            </p>
          </div>
          <div class="user-details--private-message">
@@ -30,34 +30,41 @@
      <div class="col-md-9">
        <div class="user-details--user-info">
          <div class="user-details--user-info--about">
-           <h2>About Me</h2>
-           <hr>
-           <p>{{profile.about}}</p>
+           {% if profile.about %}
+             <h2>About Me</h2>
+             <hr>
+             <p>{{profile.about}}</p>
+           {% endif %}
          </div>
          <br>
          <div class="user-details--user-info-topics two-column-list">
-           <h2>Topic Interests</h2>
-           <hr>
-           <ul>
-             <li>Rhabdomyolysis</li>
-             <li>Surgery Recovery</li>
-             <li>Compartment Syndrome</li>
-             <li>Emotional Support</li>
-             <li>Fasciotimy</li>
-           </ul>
+           {% if profile.topic_interests|length > 0 %}
+             <h2>Topic Interests</h2>
+             <hr>
+             <ul>
+              {% for topic in profile.topics  %}
+                <li>{{topic}}</li>
+              {% endfor %}
+             </ul>
+           {% endif %}
          </div>
          <br>
          <div class="user-details--user-info-subscriptions two-column-list">
-           <h2>Channel Subscriptions</h2>
-           <hr>
-           <ul>
-             <li>Rhabdomyolysis</li>
-             <li>Surgery Recovery</li>
-             <li>Compartment Syndrome</li>
-             <li>Emotional Support</li>
-             <li>Fasciotimy</li>
-           </ul>
+           {% if profile.subscriptions.all|length > 0 %}
+             <h2>Channel Subscriptions</h2>
+             <hr>
+             <ul>
+               {% for subscription in profile.subscriptions.all %}
+                <li>{{subscription}}</li>
+               {% endfor %}
+             </ul>
+           {% endif %}
          </div>
+         {% if not profile.has_more_information %}
+         <div class="user-details--user-info-missing">
+           <h2>There doesn't seem to be anything here :(</h2>
+         </div>
+         {% endif %}
        </div>
      </div>
    </div>

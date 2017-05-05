@@ -25,6 +25,10 @@ class ChatRoomView(FormView):
         kwargs['messages'] = room.messages.all().order_by('timestamp')
         kwargs['room'] = room
         kwargs['username'] = self.request.user.get_username()
+        if room in self.request.user.subscriptions.all():
+            kwargs['subscribed'] = True
+        else:
+            kwargs['subscribed'] = False
         return kwargs
 
 

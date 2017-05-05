@@ -39,3 +39,40 @@ class CustomUserCreateForm(forms.ModelForm):
         else:
             self.add_error('password', 'Passwords do not match')
             self.add_error('password_confirmation', 'Passwords do not match')
+
+class CustomUserEditForm(forms.ModelForm):
+    password_reset = forms.CharField(
+        max_length=72,
+        required=False,
+        widget=forms.widgets.TextInput(attrs={'type': 'password'}))
+
+    password_reset_confirmation = forms.CharField(
+        max_length=72,
+        required=False,
+        widget=forms.widgets.TextInput(attrs={'type': 'password'}))
+
+    class Meta:
+        model = CustomUser
+        fields = ('email', 'first_name', 'last_name', 'password_reset', 'password_reset_confirmation',
+            'about', 'avatar', 'topic_interests', 'hospital_location', 'city', 'state', 'country', 'subscriptions')
+        widgets = {
+            'topic_interests': forms.widgets.Textarea(attrs={
+                'placeholder': 'Headaches, Common Cold, Cooking'
+            })
+        }
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if len(CustomUser.objects.filter(username=username)) > 0:
+            raise ValidationError('This username is taken')
+        return self.cleaned_data['username']
+
+    def clean(self):
+        data = self.cleaned_data
+        password_reset, password_reset_confirmation = data['password_reset'], data['password_reset_confirmation']
+        if password_reset and password_reset_confirmation:
+            if password_reset == password_reset_confirmation:
+                return data
+            else:
+                self.add_error('password_reset', 'Passwords do not match')
+                self.add_error('password_reset_confirmation', 'Passwords do not match')

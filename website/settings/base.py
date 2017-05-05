@@ -191,7 +191,7 @@ MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ## Media files stored on S3
-DEFAULT_FILE_STORAGE = 'chat.imagegenerators.CustomS3Boto3Storage'
-AWS_ACCESS_KEY_ID = SECRET_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = SECRET_KEY = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+DEFAULT_FILE_STORAGE = 'website.custom_storage.CustomS3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')

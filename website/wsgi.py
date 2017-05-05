@@ -17,7 +17,7 @@ from django.conf import settings
 if settings.DEBUG:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings.base")
 else:
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings.production")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "website.settings.base")
 
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)

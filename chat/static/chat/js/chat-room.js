@@ -59,3 +59,14 @@ function autosize(){
     $(document).scrollTop($(document).height());
   },0);
 }
+
+
+$('.subscribe-button').on('click', function(e) {
+  $(e.target).addClass('hidden');
+  $('.unsubscribe-button').removeClass('hidden');
+});
+
+$('.unsubscribe-button').on('click', function(e) {
+  $(e.target).addClass('hidden');
+  $('.subscribe-button').removeClass('hidden');
+});

@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'redirect_field_name': ''}, name='logout'),
     url(r'^create-account/(?P<slug>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
     url(r'^account/(?P<pk>\d+)/$', auth.AccountDetailView.as_view(), name='account-detail'),
+    url(r'^account/(?P<pk>\d+)/edit/$', auth.AccountEditView.as_view(), name='account-edit'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

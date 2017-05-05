@@ -4325,6 +4325,9 @@ li.suggestion {
     border: 2px solid transparent;
     height: 100%; }
 
+.subscribe-button, .unsubscribe-button {
+  margin-top: 10px; }
+
 #room-search-results {
   display: none; }
 

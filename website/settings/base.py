@@ -29,7 +29,8 @@ LAZYSIGNUP_USER_MODEL = 'chat.CustomUser'
 AUTH_USER_MODEL = 'chat.CustomUser'
 
 ALLOWED_HOSTS = ['warm-depths-62159.herokuapp.com',
-                'localhost']
+                'localhost',
+                'www.hospital-chat.com']
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (

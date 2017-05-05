@@ -4240,6 +4240,9 @@ li.suggestion {
 .heavy-header {
   font-weight: 600; }
 
+.select2 {
+  color: black; }
+
 .chatbox-header {
   width: 100%;
   border-top: 10px solid #031634;
@@ -4378,3 +4381,6 @@ li.suggestion {
         padding: 0 0 0 1em; }
         .user-details .user-details--user-info .two-column-list ul li {
           margin-bottom: 5px; } }
+
+.select2 {
+  color: black; }

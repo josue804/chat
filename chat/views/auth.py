@@ -8,6 +8,8 @@ from lazysignup.utils import is_lazy_user
 from lazysignup.models import LazyUser
 from django.views.generic.edit import UpdateView
 from django.core.urlresolvers import reverse
+from dal import autocomplete
+from chat.models import Room
 
 
 class CreateAccountView(FormView):
@@ -47,6 +49,15 @@ class AccountDetailView(TemplateView):
         profile = CustomUser.objects.get(pk=kwargs['pk'])
         kwargs['profile'] = profile
         return kwargs
+
+class SubscriptionsAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+
+        qs = Room.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+        return qs
 
 class AccountEditView(UpdateView):
     template_name = "account/account-edit.html"

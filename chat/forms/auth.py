@@ -1,6 +1,7 @@
 from django import forms
 from chat.models import CustomUser
 from django.core.exceptions import ValidationError
+from dal import autocomplete
 
 class ChatRoomForm(forms.Form):
     message = forms.CharField(
@@ -58,7 +59,8 @@ class CustomUserEditForm(forms.ModelForm):
         widgets = {
             'topic_interests': forms.widgets.Textarea(attrs={
                 'placeholder': 'Headaches, Common Cold, Cooking'
-            })
+            }),
+            'subscriptions': autocomplete.ModelSelect2Multiple(url='subscriptions-autocomplete'),
         }
 
     def clean_username(self):

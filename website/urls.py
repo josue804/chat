@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^create-account/(?P<slug>[\w-]+)/$', auth.CreateAccountView.as_view(), name='create-account'),
     url(r'^account/(?P<pk>\d+)/$', auth.AccountDetailView.as_view(), name='account-detail'),
     url(r'^account/(?P<pk>\d+)/edit/$', auth.AccountEditView.as_view(), name='account-edit'),
+    url(r'^subscriptions-autocomplete/$', auth.SubscriptionsAutocomplete.as_view(), name='subscriptions-autocomplete'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

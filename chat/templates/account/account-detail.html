@@ -55,7 +55,7 @@
              <hr>
              <ul>
                {% for subscription in profile.subscriptions.all %}
-                <li>{{subscription}}</li>
+                <li><a href="{% url 'chat:chat-room' slug=subscription.slug%}">{{subscription}}</a></li>
                {% endfor %}
              </ul>
            {% endif %}

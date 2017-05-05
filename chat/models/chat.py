@@ -4,6 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from chat.extras import get_local_time
 from .auth import CustomUser
+from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Room(models.Model):
@@ -41,4 +43,4 @@ class Message(models.Model):
 
     @property
     def formatted_handle(self):
-        return self.handle + ' on ' + timezone.localtime(self.timestamp).strftime('%b %-d %-I:%M %p PST')
+        return mark_safe('<a href="' + reverse('account-detail', kwargs={'pk': self.user.pk}) + '" target="_blank">' + self.handle + '</a>' + ' on ' + timezone.localtime(self.timestamp).strftime('%b %-d %-I:%M %p PST'))

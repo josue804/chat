@@ -17,9 +17,9 @@
          {% endif %}
          <div class="user-details--basic--extra">
            <p>
-             <small><strong>{{profile.hospital_location}}</strong></small>
+             <small><strong>{{profile.hospital_location|default:''}}</strong></small>
              <br>
-             <small><strong>{{profile.get_address}}</strong></small>
+             <small><strong>{{profile.get_address|default:''}}</strong></small>
            </p>
          </div>
          <div class="user-details--private-message">

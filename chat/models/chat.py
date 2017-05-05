@@ -11,6 +11,8 @@ from django.core.urlresolvers import reverse
 class Room(models.Model):
     name = models.CharField(max_length=255)
     connections = models.IntegerField(default=0)
+    is_private = models.BooleanField(default=False)
+    private_members = models.ManyToManyField('chat.CustomUser', blank=True)
     slug = AutoSlugField(populate_from='name')
 
     def __str__(self):

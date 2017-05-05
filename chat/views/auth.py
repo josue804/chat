@@ -44,6 +44,14 @@ class CreateAccountView(FormView):
 class AccountDetailView(TemplateView):
     template_name = "account/account-detail.html"
 
+    def get(self, request, *args, **kwargs):
+        try:
+            if is_lazy_user(CustomUser.objects.get(pk=kwargs['pk'])):
+                return redirect(reverse('chat:chat-dashboard'))
+        except:
+            return redirect(reverse('chat:chat-dashboard'))
+        return super(AccountDetailView, self).get(request, *args, **kwargs)
+
     def get_context_data(self, *args, **kwargs):
         kwargs = super(AccountDetailView, self).get_context_data(*args, **kwargs)
         profile = CustomUser.objects.get(pk=kwargs['pk'])
@@ -67,6 +75,11 @@ class AccountEditView(UpdateView):
     def get(self, request, *args, **kwargs):
         if not self.request.user.id == int(kwargs['pk']):
             return redirect(reverse('account-detail', kwargs={'pk': request.user.pk}))
+        try:
+            if is_lazy_user(CustomUser.objects.get(pk=kwargs['pk'])):
+                return redirect(reverse('chat:chat-dashboard'))
+        except:
+            return redirect(reverse('chat:chat-dashboard'))
         return super(AccountEditView, self).get(request, *args, **kwargs)
 
     def form_valid(self, form):

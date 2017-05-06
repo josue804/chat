@@ -37,9 +37,10 @@ def ws_message(message):
         user = message.user
     room = Room.objects.get(slug=message.channel_session['room'])
     saved_message = Message.objects.create(room=room, handle=handle, message=message['text'], user=user)
+    handle = user.get_username()
     Group("%s" % message.channel_session['room']).send({
-        "text": saved_message.message+'GqbTvLGBHZ'+saved_message.formatted_handle,
-    })
+        "text": saved_message.message+'GqbTvLGBHZ'+saved_message.formatted_handle+'GqbTvLGBHZ'+handle,
+    });
 
 # Connected to websocket.disconnect
 @channel_session_user

@@ -9,17 +9,22 @@ function linkify(text) {
 }
 
 chatsocket.onmessage = function(e) {
-  data_array = e.data.split('GqbTvLGBHZ');
-  text = data_array[0];
-  handle = data_array[1];
-  $('.scrollbar').append("<div class='chatbox-text--line-sent'>" +
-                            "<div class='chatbox-text--line-message-sent'>" +
+  var dataArray = e.data.split('GqbTvLGBHZ');
+  var text = dataArray[0];
+  var formattedHandle = dataArray[1];
+  var handle = dataArray[2];
+  var messageType = 'received'
+  if (handle == $('.user-username').text()) {
+    var messageType = 'sent';
+  }
+  $('.scrollbar').append("<div class='chatbox-text--line-"+ messageType +"'>" +
+                            "<div class='chatbox-text--line-message-"+ messageType +"'>" +
                               "<p>" +
                                 text +
                               "</p>" +
                             "</div>" +
-                            "<small class='chatbox-text--author-sent'>" +
-                            handle +
+                            "<small class='chatbox-text--author-"+ messageType +"'>" +
+                            formattedHandle +
                             "</small>" +
                           "</div>");
   $('.scrollbar').animate({scrollTop: $('.scrollbar').prop("scrollHeight")}, 500);
@@ -40,8 +45,8 @@ chatsocket.onopen = function() {
         $input.val("");
         $input.height("18px");
         $input.focus();
-        anchored_message = anchorme(message, {attributes:[{name:"target", value:"_blank"}]});
-        chatsocket.send(anchored_message);
+        var anchoredMessage = anchorme(message, {attributes:[{name:"target", value:"_blank"}]});
+        chatsocket.send(anchoredMessage);
       });
     });
   var textarea = document.querySelector('textarea');

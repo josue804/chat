@@ -36,7 +36,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown dropdown-toggle" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                <a href="#">{% if user|is_lazy_user %}Guest <strong>{{request.user.get_username}}</strong>{% else %}{{request.user.username}}{%endif%} <span class="caret"></span></a>
+                <a href="#">{% if user|is_lazy_user %}Guest {% endif %}<strong class="user-username">{{request.user.get_username}}</strong> <span class="caret"></span></a>
               </li>
               <ul class="dropdown-menu" aria-labelledby="user-dropdown">
                 {% if request.user.is_authenticated %}

@@ -1,20 +1,31 @@
 $background-pink : #FF006C;
+$white : #F0EDEE;
+$blue : #006663;
+$grey : #8F9491;
+
+* {
+	border-radius: 0 !important;
+}
 
 body {
 	font-family: 'Montserrat', sans-serif;
-	background: url('../img/ignasi_pattern_s.png'); // Obtained via https://subtlepatterns.com/
+	// background-color: $white;
+	background: url('../img/custom-lines.png'); // Obtained via https://subtlepatterns.com/
 	font-size: 18px;
 }
 
 // Navbar
 .navbar {
-	background-color: $background-pink;
+	background-color: #fff;
 	border: 0;
 	border-radius: 0px;
+	-webkit-box-shadow: -9px 7px 84px -15px rgba(0,0,0,0.68);
+	-moz-box-shadow: -9px 7px 84px -15px rgba(0,0,0,0.68);
+	box-shadow: -9px 7px 84px -15px rgba(0,0,0,0.68);
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
-		color: #FFF;
+		color: $blue;
 		font-weight: 700;
 		// line-height: 45px;
 		font-size: 1.5em;
@@ -22,16 +33,16 @@ body {
 
 .navbar-default .navbar-nav > li > a,
 .navbar-default .navbar-nav > li > a:hover {
-    color: #FFF;
+    color: $blue;
 		// line-height: 45px;
 		font-size: 1.2em;
-		background: $background-pink;
+		background: #fff;
 		margin-top: 0;
 }
 
 .navbar-default .navbar-nav > li > a:focus {
 	color: #FFF;
-	background: #CC0056;
+	background: $blue;
 }
 
 .navbar-right .dropdown-menu {
@@ -46,7 +57,7 @@ body {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
 	color: #FFF;
-	background-color: #CC0056;
+	background-color: $blue;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -55,13 +66,14 @@ body {
 
 //Dropdown
 .dropdown-menu {
-	background-color: $background-pink;
+	background-color: $blue;
 	padding: 0;
 }
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-	background-color: #CC0056;
+	background-color: rgba(255,255,255,1);
+	color: $blue !important;
 }
 
 .dropdown-menu > li > a > small {
@@ -77,8 +89,11 @@ body {
 }
 
 .jumbotron {
-	background-color: #8FBE00;
+	background-color: $blue;
 	color: #FFF;
+	-webkit-box-shadow: -8px 6px 112px -16px rgba(0,0,0,0.75);
+	-moz-box-shadow: -8px 6px 112px -16px rgba(0,0,0,0.75);
+	box-shadow: -8px 6px 112px -16px rgba(0,0,0,0.75);
 }
 
 .scrollbar
@@ -121,7 +136,7 @@ body {
 
   .base-input-form--form {
     display: flex;
-    border: 15px solid #698B00;
+    border: 15px solid white;
   }
 
   .base-input-form--input {
@@ -155,22 +170,36 @@ li.suggestion {
 
 .btn-custom {
 	color: #FFF;
-	background-color: $background-pink;
+	background-color: $blue;
+
 }
 
 .btn-custom:hover {
 	color: #FFF;
-	background-color: #FF3389;
+	background-color: rgba(0,196,172,.7);
 }
 
 .btn-chat {
 	color: #FFF;
-	background: $background-pink;
+	background: $blue;
+
 }
 
 .btn-chat:hover {
 	color: #FFF;
 	background-color: #FF3389;
+}
+
+.btn-primary {
+	background-color: #00C4AC;
+	border-color: #00A390;
+
+	opacity: 1;
+	&:hover {
+		background-color: #00C4AC;
+		border-color: #00C4AC;
+		opacity: .9;
+	}
 }
 
 .heavy-header {

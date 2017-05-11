@@ -60,8 +60,23 @@ body {
 	background-color: $blue;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-	background-color: #fff;
+.navbar-default .navbar-toggle{
+	border-color: $blue;
+
+	&.navbar-toggle{
+		background-color: $blue;
+		.icon-bar {
+			background-color: #fff;
+		}
+	}
+
+	&.collapsed {
+		background-color: #fff;
+
+		.icon-bar {
+			background-color: $blue;
+		}
+	}
 }
 
 //Dropdown

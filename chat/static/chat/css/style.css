@@ -4152,8 +4152,16 @@ body {
   color: #FFF;
   background-color: #006663; }
 
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff; }
+.navbar-default .navbar-toggle {
+  border-color: #006663; }
+  .navbar-default .navbar-toggle.navbar-toggle {
+    background-color: #006663; }
+    .navbar-default .navbar-toggle.navbar-toggle .icon-bar {
+      background-color: #fff; }
+  .navbar-default .navbar-toggle.collapsed {
+    background-color: #fff; }
+    .navbar-default .navbar-toggle.collapsed .icon-bar {
+      background-color: #006663; }
 
 .dropdown-menu {
   background-color: #006663;

@@ -4115,6 +4115,9 @@ body {
   background: url("../img/custom-lines.png");
   font-size: 18px; }
 
+a {
+  color: #249aff; }
+
 .navbar {
   background-color: #fff;
   border: 0;
@@ -4253,7 +4256,7 @@ li.suggestion {
 
 .btn-chat:hover {
   color: #FFF;
-  background-color: #FF3389; }
+  background-color: #0b9e9a; }
 
 .btn-primary {
   background-color: #00C4AC;
@@ -4303,9 +4306,12 @@ li.suggestion {
     max-width: 50%;
     border-radius: 20px;
     font-size: 1.2em; }
+    @media (max-width: 767px) {
+      .chatbox-text .chatbox-text--line-sent {
+        max-width: 80%; } }
   .chatbox-text .chatbox-text--line-message-sent {
     text-align: left;
-    background: #bbb;
+    background: #dcdcdc;
     border-radius: 20px;
     padding: 20px 30px 20px 20px; }
     .chatbox-text .chatbox-text--line-message-sent p {
@@ -4320,6 +4326,9 @@ li.suggestion {
     word-wrap: break-word;
     border-radius: 20px;
     font-size: 1.2em; }
+    @media (max-width: 767px) {
+      .chatbox-text .chatbox-text--line-received {
+        margin-left: 20%; } }
   .chatbox-text .chatbox-text--line-message-received {
     text-align: right;
     background-color: #a7db0d;
@@ -4330,9 +4339,15 @@ li.suggestion {
   .chatbox-text .chatbox-text--author-sent {
     margin-left: 5%;
     text-align: left; }
+    @media (max-width: 767px) {
+      .chatbox-text .chatbox-text--author-sent {
+        margin-left: 0; } }
   .chatbox-text .chatbox-text--author-received {
     margin-right: 5%;
     text-align: left; }
+    @media (max-width: 767px) {
+      .chatbox-text .chatbox-text--author-received {
+        margin-right: 0; } }
 
 .chatbox-form {
   width: 100%;

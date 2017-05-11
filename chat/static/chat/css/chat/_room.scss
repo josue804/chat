@@ -38,11 +38,14 @@ $chatbox-width: 100%;
     max-width: 50%;
     border-radius: 20px;
     font-size: 1.2em;
+    @media (max-width:767px) {
+      max-width: 80%;
+    }
   }
 
   .chatbox-text--line-message-sent {
     text-align: left;
-    background: #bbb;
+    background: #dcdcdc;
     border-radius: 20px;
     padding: 20px 30px 20px 20px;
 
@@ -60,6 +63,9 @@ $chatbox-width: 100%;
     word-wrap: break-word;
     border-radius: 20px;
     font-size: 1.2em;
+    @media (max-width:767px) {
+      margin-left: 20%;
+    }
   }
   .chatbox-text--line-message-received {
     text-align: right;
@@ -75,11 +81,17 @@ $chatbox-width: 100%;
   .chatbox-text--author-sent {
     margin-left: 5%;
     text-align: left;
+    @media (max-width:767px) {
+      margin-left: 0;
+    }
   }
 
   .chatbox-text--author-received {
     margin-right: 5%;
     text-align: left;
+    @media (max-width:767px) {
+      margin-right: 0;
+    }
   }
 
 }

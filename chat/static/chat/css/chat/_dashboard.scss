@@ -2,11 +2,29 @@
   display: none;
 }
 
-#ui-id-1 {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  overflow: auto;
+.ui-menu.ui-widget.ui-widget-content {
+  max-width: 80%;
+  @media (min-width:767px){
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    overflow: auto;
+    max-width: 50%;
+  }
+  background: #fff;
+
+  .ui-menu-item a:hover{
+    color: $blue-2;
+  }
+
+  .ui-menu-item:hover, .ui-menu-item:focus{
+    a {
+      border: 0;
+      color: $blue-2;
+      font-weight: normal;
+    }
+  }
+
 }
 
 .room-search {

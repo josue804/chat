@@ -1,6 +1,7 @@
 $background-pink : #FF006C;
 $white : #F0EDEE;
 $blue : #006663;
+$blue-2 : #0b9e9a;
 $grey : #8F9491;
 
 * {
@@ -12,6 +13,10 @@ body {
 	// background-color: $white;
 	background: url('../img/custom-lines.png'); // Obtained via https://subtlepatterns.com/
 	font-size: 18px;
+}
+
+a {
+	color: #249aff;
 }
 
 // Navbar
@@ -60,8 +65,23 @@ body {
 	background-color: $blue;
 }
 
-.navbar-default .navbar-toggle .icon-bar {
-	background-color: #fff;
+.navbar-default .navbar-toggle{
+	border-color: $blue;
+
+	&.navbar-toggle{
+		background-color: $blue;
+		.icon-bar {
+			background-color: #fff;
+		}
+	}
+
+	&.collapsed {
+		background-color: #fff;
+
+		.icon-bar {
+			background-color: $blue;
+		}
+	}
 }
 
 //Dropdown
@@ -187,7 +207,7 @@ li.suggestion {
 
 .btn-chat:hover {
 	color: #FFF;
-	background-color: #FF3389;
+	background-color: $blue-2;
 }
 
 .btn-primary {

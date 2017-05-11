@@ -65,15 +65,11 @@ function autosize(){
   },0);
 }
 
-
-$('.subscribe-button').on('click', function(e) {
-  $(e.target).addClass('hidden');
-  $('.unsubscribe-button').removeClass('hidden');
-});
-
-$('.unsubscribe-button').on('click', function(e) {
-  $(e.target).addClass('hidden');
-  $('.subscribe-button').removeClass('hidden');
+$('.chatbox-form--input').keypress(function(e) {
+  if (e.which == 13 && !e.shiftKey) {
+    $(e.target).submit();
+    return false;
+  }
 });
 
 if ($('#condition').length > 0) {

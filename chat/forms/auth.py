@@ -15,7 +15,11 @@ class ChatRoomForm(forms.Form):
     )
 
 class CustomUserCreateForm(forms.ModelForm):
-    password_confirmation = forms.CharField(max_length=72, required=True, widget=forms.widgets.TextInput(attrs={'type': 'password'}))
+    password_confirmation = forms.CharField(
+        max_length=72,
+        required=True,
+        widget=forms.widgets.TextInput(attrs={'type': 'password'})
+    )
     username = forms.CharField(max_length=150, help_text=None)
 
     class Meta:

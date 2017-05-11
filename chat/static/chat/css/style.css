@@ -4376,11 +4376,22 @@ li.suggestion {
 #room-search-results {
   display: none; }
 
-#ui-id-1 {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  overflow: auto; }
+.ui-menu.ui-widget.ui-widget-content {
+  max-width: 80%;
+  background: #fff; }
+  @media (min-width: 767px) {
+    .ui-menu.ui-widget.ui-widget-content {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      overflow: auto;
+      max-width: 50%; } }
+  .ui-menu.ui-widget.ui-widget-content .ui-menu-item a:hover {
+    color: #0b9e9a; }
+  .ui-menu.ui-widget.ui-widget-content .ui-menu-item:hover a, .ui-menu.ui-widget.ui-widget-content .ui-menu-item:focus a {
+    border: 0;
+    color: #0b9e9a;
+    font-weight: normal; }
 
 .room-search {
   display: block; }

@@ -60,3 +60,13 @@ def room_autocomplete(request, name):
 
     filtered_rooms = filtered_rooms_starts + list(in_contains_but_not_in_starts)
     return HttpResponse(serializers.serialize("json", filtered_rooms, fields=('name', 'connections')))
+
+def room_subscribe(request, slug):
+    room = Room.objects.get(slug=slug)
+    request.user.subscriptions.add(room)
+    return HttpResponse('success')
+
+def room_unsubscribe(request, slug):
+    room = Room.objects.get(slug=slug)
+    request.user.subscriptions.remove(room)
+    return HttpResponse('success')

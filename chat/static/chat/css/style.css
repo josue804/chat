@@ -4115,7 +4115,7 @@ body {
   background: url("../img/custom-lines.png");
   font-size: 18px; }
 
-a {
+a, a:hover, a:focus {
   color: #249aff; }
 
 .navbar {
@@ -4278,105 +4278,97 @@ li.suggestion {
 .file-upload-field input {
   max-width: 100%; }
 
-.chatbox-header {
-  width: 100%;
-  border-top: 10px solid #031634;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  color: white;
-  background-color: #031634;
-  margin: 0;
-  padding-left: 20px; }
-  .chatbox-header h1 {
-    margin-bottom: 0;
+.chatbox {
+  background-color: #031634; }
+  .chatbox .chatbox-header {
     color: #fff;
-    font-size: 2em; }
-
-.chatbox-text {
-  width: 100%;
-  overflow: auto;
-  border: 15px solid #031634;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
-  .chatbox-text .chatbox-text--chat {
-    position: relative; }
-  .chatbox-text .chatbox-text--line-sent {
-    margin-left: 5%;
-    margin-top: 7%;
-    text-align: left;
-    display: block;
-    word-wrap: break-word;
-    max-width: 50%;
-    border-radius: 20px;
-    font-size: 1.2em; }
-    @media (max-width: 767px) {
-      .chatbox-text .chatbox-text--line-sent {
-        max-width: 80%; } }
-  .chatbox-text .chatbox-text--line-message-sent {
-    text-align: left;
-    background: #dcdcdc;
-    border-radius: 20px;
-    padding: 20px 30px 20px 20px; }
-    .chatbox-text .chatbox-text--line-message-sent p {
-      color: #000;
-      font-size: 22px; }
-  .chatbox-text .chatbox-text--line-received {
-    margin-right: 5%;
-    margin-left: 45%;
-    margin-top: 7%;
-    text-align: right;
-    display: block;
-    word-wrap: break-word;
-    border-radius: 20px;
-    font-size: 1.2em; }
-    @media (max-width: 767px) {
-      .chatbox-text .chatbox-text--line-received {
-        margin-left: 20%; } }
-  .chatbox-text .chatbox-text--line-message-received {
-    text-align: right;
-    background-color: #a7db0d;
-    border-radius: 20px;
-    padding: 20px 20px 20px 30px; }
-    .chatbox-text .chatbox-text--line-message-received p {
-      color: black; }
-  .chatbox-text .chatbox-text--author-sent {
-    margin-left: 5%;
-    text-align: left; }
-    @media (max-width: 767px) {
-      .chatbox-text .chatbox-text--author-sent {
-        margin-left: 0; } }
-  .chatbox-text .chatbox-text--author-received {
-    margin-right: 5%;
-    text-align: left; }
-    @media (max-width: 767px) {
-      .chatbox-text .chatbox-text--author-received {
-        margin-right: 0; } }
-
-.chatbox-form {
-  width: 100%;
-  border-bottom: 15px solid #031634; }
-  .chatbox-form .chatbox-form--form {
+    padding: 10px 0 0 20px; }
+    .chatbox .chatbox-header .unsubscribe-link {
+      color: #ffab24;
+      text-decoration: none; }
+    .chatbox .chatbox-header .subscribe-link {
+      text-decoration: none; }
+  .chatbox .chatbox-text {
+    width: 100%;
+    overflow: auto;
+    border: 15px solid #031634;
+    border-bottom: 0;
     display: flex;
-    border-left: 15px solid #031634;
-    border-right: 15px solid #031634; }
-  .chatbox-form .chatbox-form--input {
-    flex: 10;
-    border-radius: 0;
-    border: 2px solid transparent;
-    overflow: hidden;
-    padding: 18px;
-    background: #EEE; }
-  .chatbox-form .chatbox-form--send .btn {
-    border-radius: 0;
-    padding-right: 25px;
-    padding-left: 25px;
-    border: 2px solid transparent;
-    min-height: 59px; }
-
-.subscribe-button, .unsubscribe-button {
-  margin-top: 10px; }
+    flex-direction: column;
+    justify-content: space-between; }
+    .chatbox .chatbox-text .chatbox-text--chat {
+      position: relative; }
+    .chatbox .chatbox-text .chatbox-text--line-sent {
+      margin-left: 5%;
+      margin-top: 7%;
+      text-align: left;
+      display: block;
+      word-wrap: break-word;
+      max-width: 50%;
+      border-radius: 20px;
+      font-size: 1.2em; }
+      @media (max-width: 767px) {
+        .chatbox .chatbox-text .chatbox-text--line-sent {
+          max-width: 80%; } }
+    .chatbox .chatbox-text .chatbox-text--line-message-sent {
+      text-align: left;
+      background: #dcdcdc;
+      border-radius: 20px;
+      padding: 20px 30px 20px 20px; }
+      .chatbox .chatbox-text .chatbox-text--line-message-sent p {
+        color: #000;
+        font-size: 22px; }
+    .chatbox .chatbox-text .chatbox-text--line-received {
+      margin-right: 5%;
+      margin-left: 45%;
+      margin-top: 7%;
+      text-align: right;
+      display: block;
+      word-wrap: break-word;
+      border-radius: 20px;
+      font-size: 1.2em; }
+      @media (max-width: 767px) {
+        .chatbox .chatbox-text .chatbox-text--line-received {
+          margin-left: 20%; } }
+    .chatbox .chatbox-text .chatbox-text--line-message-received {
+      text-align: right;
+      background-color: #0f8a1e;
+      border-radius: 20px;
+      padding: 20px 20px 20px 30px; }
+      .chatbox .chatbox-text .chatbox-text--line-message-received p {
+        color: black; }
+    .chatbox .chatbox-text .chatbox-text--author-sent {
+      margin-left: 5%;
+      text-align: left; }
+      @media (max-width: 767px) {
+        .chatbox .chatbox-text .chatbox-text--author-sent {
+          margin-left: 0; } }
+    .chatbox .chatbox-text .chatbox-text--author-received {
+      margin-right: 5%;
+      text-align: left; }
+      @media (max-width: 767px) {
+        .chatbox .chatbox-text .chatbox-text--author-received {
+          margin-right: 0; } }
+  .chatbox .chatbox-form {
+    width: 100%;
+    border-bottom: 15px solid #031634; }
+    .chatbox .chatbox-form .chatbox-form--form {
+      display: flex;
+      border-left: 15px solid #031634;
+      border-right: 15px solid #031634; }
+    .chatbox .chatbox-form .chatbox-form--input {
+      flex: 10;
+      border-radius: 0;
+      border: 2px solid transparent;
+      overflow: hidden;
+      padding: 18px;
+      background: #EEE; }
+    .chatbox .chatbox-form .chatbox-form--send .btn {
+      border-radius: 0;
+      padding-right: 25px;
+      padding-left: 25px;
+      border: 2px solid transparent;
+      min-height: 59px; }
 
 #room-search-results {
   display: none; }

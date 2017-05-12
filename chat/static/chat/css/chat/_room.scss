@@ -1,132 +1,128 @@
 $chatbox-width: 100%;
 
-.chatbox-header {
-  width: $chatbox-width;
-  border-top: 10px solid #031634;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  color: white;
+.chatbox {
   background-color: #031634;
-  margin: 0;
-  padding-left: 20px;
-  h1 {
-    margin-bottom: 0;
+
+  .chatbox-header {
     color: #fff;
-    font-size: 2em;
+    padding: 10px 0 0 20px;
+
+      .unsubscribe-link {
+        color: #ffab24;
+        text-decoration: none;
+      }
+      .subscribe-link {
+        text-decoration: none;
+      }
   }
-}
-
-.chatbox-text {
-  width: $chatbox-width;
-  overflow: auto;
-  border: 15px solid #031634;
-  border-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .chatbox-text--chat {
-    position: relative;
-  }
-
-  .chatbox-text--line-sent {
-    margin-left: 5%;
-    margin-top: $chat-text-padding;
-    text-align: left;
-    display: block;
-    word-wrap: break-word;
-    max-width: 50%;
-    border-radius: 20px;
-    font-size: 1.2em;
-    @media (max-width:767px) {
-      max-width: 80%;
-    }
-  }
-
-  .chatbox-text--line-message-sent {
-    text-align: left;
-    background: #dcdcdc;
-    border-radius: 20px;
-    padding: 20px 30px 20px 20px;
-
-    p {
-      color: #000;
-      font-size: 22px;
-    }
-  }
-  .chatbox-text--line-received {
-    margin-right: 5%;
-    margin-left: 45%;
-    margin-top: $chat-text-padding;
-    text-align: right;
-    display: block;
-    word-wrap: break-word;
-    border-radius: 20px;
-    font-size: 1.2em;
-    @media (max-width:767px) {
-      margin-left: 20%;
-    }
-  }
-  .chatbox-text--line-message-received {
-    text-align: right;
-    background-color: rgba(167,219,13,1);
-    border-radius: 20px;
-    padding: 20px 20px 20px 30px;
-
-    p {
-      color: black;
-    }
-  }
-
-  .chatbox-text--author-sent {
-    margin-left: 5%;
-    text-align: left;
-    @media (max-width:767px) {
-      margin-left: 0;
-    }
-  }
-
-  .chatbox-text--author-received {
-    margin-right: 5%;
-    text-align: left;
-    @media (max-width:767px) {
-      margin-right: 0;
-    }
-  }
-
-}
-
-.chatbox-form {
-  width: $chatbox-width;
-  border-bottom: 15px solid #031634;
-
-  .chatbox-form--form {
+  .chatbox-text {
+    width: $chatbox-width;
+    overflow: auto;
+    border: 15px solid #031634;
+    border-bottom: 0;
     display: flex;
-    border-left: 15px solid #031634;
-    border-right: 15px solid #031634;
-  }
+    flex-direction: column;
+    justify-content: space-between;
 
-  .chatbox-form--input {
-    flex: 10;
-    border-radius: 0;
-    border: 2px solid transparent;
-    overflow: hidden;
-    padding: 18px;
-    background: #EEE;
-  }
-
-  .chatbox-form--send {
-    .btn {
-      border-radius: 0;
-      padding-right: 25px;
-      padding-left: 25px;
-      border: 2px solid transparent;
-      min-height: 59px;
+    .chatbox-text--chat {
+      position: relative;
     }
+
+    .chatbox-text--line-sent {
+      margin-left: 5%;
+      margin-top: $chat-text-padding;
+      text-align: left;
+      display: block;
+      word-wrap: break-word;
+      max-width: 50%;
+      border-radius: 20px;
+      font-size: 1.2em;
+      @media (max-width:767px) {
+        max-width: 80%;
+      }
+    }
+
+    .chatbox-text--line-message-sent {
+      text-align: left;
+      background: #dcdcdc;
+      border-radius: 20px;
+      padding: 20px 30px 20px 20px;
+
+      p {
+        color: #000;
+        font-size: 22px;
+      }
+    }
+    .chatbox-text--line-received {
+      margin-right: 5%;
+      margin-left: 45%;
+      margin-top: $chat-text-padding;
+      text-align: right;
+      display: block;
+      word-wrap: break-word;
+      border-radius: 20px;
+      font-size: 1.2em;
+      @media (max-width:767px) {
+        margin-left: 20%;
+      }
+    }
+    .chatbox-text--line-message-received {
+      text-align: right;
+      background-color: #0f8a1e;
+      border-radius: 20px;
+      padding: 20px 20px 20px 30px;
+
+      p {
+        color: black;
+      }
+    }
+
+    .chatbox-text--author-sent {
+      margin-left: 5%;
+      text-align: left;
+      @media (max-width:767px) {
+        margin-left: 0;
+      }
+    }
+
+    .chatbox-text--author-received {
+      margin-right: 5%;
+      text-align: left;
+      @media (max-width:767px) {
+        margin-right: 0;
+      }
+    }
+
   }
 
-}
+  .chatbox-form {
+    width: $chatbox-width;
+    border-bottom: 15px solid #031634;
 
-.subscribe-button, .unsubscribe-button {
-  margin-top: 10px;
+    .chatbox-form--form {
+      display: flex;
+      border-left: 15px solid #031634;
+      border-right: 15px solid #031634;
+    }
+
+    .chatbox-form--input {
+      flex: 10;
+      border-radius: 0;
+      border: 2px solid transparent;
+      overflow: hidden;
+      padding: 18px;
+      background: #EEE;
+    }
+
+    .chatbox-form--send {
+      .btn {
+        border-radius: 0;
+        padding-right: 25px;
+        padding-left: 25px;
+        border: 2px solid transparent;
+        min-height: 59px;
+      }
+    }
+
+  }
 }

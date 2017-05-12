@@ -121,7 +121,7 @@ $chatbox-width: 100%;
       padding-right: 25px;
       padding-left: 25px;
       border: 2px solid transparent;
-      height: 100%;
+      min-height: 100%;
     }
   }
 

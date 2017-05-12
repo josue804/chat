@@ -228,4 +228,12 @@ li.suggestion {
 
 .select2 {
   color: black;
+
+	&.select2-container {
+		min-width: 100%;
+	}
+}
+
+.file-upload-field input {
+	max-width: 100%;
 }

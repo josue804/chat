@@ -2,7 +2,8 @@
   display: none;
 }
 
-.ui-menu.ui-widget.ui-widget-content {
+ul.custom-autocomplete {
+  font-family: 'Montserrat', sans-serif;
   max-width: 80%;
   @media (min-width:767px){
     columns: 2;
@@ -18,14 +19,29 @@
   }
 
   .ui-menu-item:hover, .ui-menu-item:focus{
-    a {
+    a.ui-menu-item-wrapper {
       border: 0;
       color: $blue-2;
       font-weight: normal;
+      font-family: inherit;
     }
   }
 
+  .ui-menu-item:active {
+    border-color: red;
+  }
+
+  .ui-state-active {
+    border: 0;
+    background: #fff;
+    color: $blue-2;
+    font-weight: normal;
+    text-decoration: underline;
+  }
+
 }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active
 
 .room-search {
   display: block;

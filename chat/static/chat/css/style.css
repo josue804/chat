@@ -4246,7 +4246,7 @@ li.suggestion {
   color: #FFF;
   background-color: #006663; }
 
-.btn-custom:hover {
+.btn.btn-custom.btn-md:active, .btn.btn-custom.btn-md:hover {
   color: #FFF;
   background-color: rgba(0, 196, 172, 0.7); }
 
@@ -4258,11 +4258,11 @@ li.suggestion {
   color: #FFF;
   background-color: #0b9e9a; }
 
-.btn-primary {
+.btn-primary, .btn-primary.btn-lg {
   background-color: #00C4AC;
   border-color: #00A390;
   opacity: 1; }
-  .btn-primary:hover {
+  .btn-primary:hover, .btn-primary.btn-lg:hover {
     background-color: #00C4AC;
     border-color: #00C4AC;
     opacity: .9; }

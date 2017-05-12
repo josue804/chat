@@ -191,10 +191,9 @@ li.suggestion {
 .btn-custom {
 	color: #FFF;
 	background-color: $blue;
-
 }
 
-.btn-custom:hover {
+.btn.btn-custom.btn-md:active, .btn.btn-custom.btn-md:hover {
 	color: #FFF;
 	background-color: rgba(0,196,172,.7);
 }
@@ -210,7 +209,7 @@ li.suggestion {
 	background-color: $blue-2;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary.btn-lg {
 	background-color: #00C4AC;
 	border-color: #00A390;
 

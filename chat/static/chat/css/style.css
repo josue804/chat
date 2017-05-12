@@ -4232,7 +4232,7 @@ a {
     border-radius: 0;
     padding-right: 25px;
     padding-left: 25px;
-    min-height: 100%; }
+    min-height: 52px; }
   .base-input-form .base-input-form--send .glyphicon, .base-input-form .base-input-form--send .glyphicon-search {
     position: static; }
 
@@ -4373,7 +4373,7 @@ li.suggestion {
     padding-right: 25px;
     padding-left: 25px;
     border: 2px solid transparent;
-    min-height: 100%; }
+    min-height: 59px; }
 
 .subscribe-button, .unsubscribe-button {
   margin-top: 10px; }
